@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:restaurantapp/modules/Home/presentaion/Home.dart';
+import 'package:restaurantapp/modules/Home/presentaion/Product.dart';
+import 'package:restaurantapp/modules/Home/presentaion/ProductDetails.dart';
 import 'package:restaurantapp/modules/Registration/presentation/Registration.dart';
 import 'package:restaurantapp/modules/Registration/presentation/login.dart';
 import 'package:restaurantapp/modules/Registration/presentation/signup.dart';
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         "Reg":(context)=>Reg(),
         "login":(context)=>login(),
         "signup":(context)=>Signup(),
+        "ProductDetails":(context)=>ProductDetails(),
+        "Product":(context)=>Product(),
       },
     );
   }

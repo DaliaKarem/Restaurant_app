@@ -48,11 +48,16 @@ class _HomePageState extends State<HomePage> {
                         ))
                   ],
                 ),
-                Container(
-                    padding: EdgeInsets.all(10),
-                    // margin: const EdgeInsets.symmetric(vertical: 20),
-                    height: 100,
-                    child: category()),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushNamed("Product");
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      // margin: const EdgeInsets.symmetric(vertical: 20),
+                      height: 100,
+                      child: category()),
+                ),
               ],
             ),
           ),
@@ -79,7 +84,11 @@ class _HomePageState extends State<HomePage> {
                         ))
                   ],
                 ),
-                TrendingFood(),
+                InkWell(
+                    onTap: (){
+                      Navigator.of(context).pushNamed("ProductDetails");
+                    },
+                    child: TrendingFood()),
                 TrendingFood(),
                 TrendingFood(),
               ],
@@ -190,9 +199,10 @@ class _TrendingFoodState extends State<TrendingFood> {
             children: [
               Text("Dal Tadka",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
               Container(
+                width: 250,
                 padding: EdgeInsets.only(right: 10),
                 child: Text(
-                  'It is a long established fact that a reader will be ggggggggggggggggggg.',
+                  'It is a long established fact that a reader will be gggggggggg ggggggggg.',
                   style: TextStyle(fontSize: 10),
                   softWrap: false,
                   maxLines: 1,
