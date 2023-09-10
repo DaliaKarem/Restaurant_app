@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurantapp/core/Widgets/CartItems.dart';
 import 'package:restaurantapp/modules/Home/presentaion/HomePage.dart';
+import 'package:restaurantapp/modules/Home/presentaion/trendingFood/trendingFood.dart';
 
 class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);

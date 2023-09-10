@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:restaurantapp/modules/Home/presentaion/ProductDetails.dart';
+import 'package:restaurantapp/core/Function/DataBaseFun.dart';
+import 'package:restaurantapp/core/Links.dart';
+import 'package:restaurantapp/modules/Home/presentaion/Category/ProductDetails.dart';
 
 class Product extends StatefulWidget {
   const Product({Key? key}) : super(key: key);
@@ -9,6 +11,13 @@ class Product extends StatefulWidget {
 }
 
 class _ProductState extends State<Product> {
+  DataBaseFun fun = DataBaseFun();
+
+  getData() async {
+    var response = await fun.getReq(allFood);
+    return response;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,32 +34,57 @@ class _ProductState extends State<Product> {
           IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Categories(),
-          Expanded(
-              child: GridView.builder(
-                itemCount: 10,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                   ),
-                  itemBuilder: (context, i) => Item(pressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetails())),))),
-        ],
-      ),
-    );
+      body:  FutureBuilder(
+            future: getData(),
+            builder: (BuildContext context,
+                AsyncSnapshot<dynamic> snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data['status'] != 'success') {
+                  return Text("Failll");
+                }
+                else {
+                  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                       ListView.builder(
+                         itemCount: categories.length,
+                           itemBuilder: (item,i){
+                         Categories(cat:snapshot.data['data'][i]['order_category']);
+                       }),
+                        GridView.builder(
+                            itemCount: snapshot.data['data'].length,
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                            ),
+                            itemBuilder: (context, i) =>
+                                Item(pressed: () => Navigator.push(context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProductDetails())), name: snapshot.data['data'][i]['order_name'], image:snapshot.data['data'][i]['order_img'],
+                                )),
+               ]
+                  )   ;
+              }
+
+              }
+              return Text("Errrrrrrrrrrrrrrrrrror");
+            },
+
+          )
+
+     );
   }
 }
 
 class Categories extends StatefulWidget {
-  const Categories({Key? key}) : super(key: key);
-
+   Categories({Key? key,required this.cat}) : super(key: key);
+   String cat;
   @override
   State<Categories> createState() => _CategoriesState();
 }
+List<String> categories = ['Rice', 'salad', 'Pizza','Burger','Pasta'];
 
 class _CategoriesState extends State<Categories> {
-  List<String> categories = ['Rice', 'Juice', 'fast food'];
   int selected = 0;
 
   @override
@@ -63,13 +97,20 @@ class _CategoriesState extends State<Categories> {
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
             itemBuilder: (context, i) {
-              return buildcategory(i);
+              return buildcategory(i,widget.cat);
             }),
       ),
     );
   }
 
-  Widget buildcategory(int index) {
+  Widget buildcategory(int index,String cat) {
+    for(int i=0;i<categories.length;i++){
+      if(categories.contains(cat))
+        {
+          print(i);
+        }
+      index=i;
+    }
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -82,6 +123,7 @@ class _CategoriesState extends State<Categories> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
+
               categories[index],
               style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -101,8 +143,12 @@ class _CategoriesState extends State<Categories> {
 }
 
 class Item extends StatelessWidget {
-   Item({Key? key,required this.pressed}) : super(key: key);
+  Item(
+      {Key? key, required this.pressed, required this.name, required this.image})
+      : super(key: key);
   final void Function()? pressed;
+  String image, name;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -112,18 +158,18 @@ class Item extends StatelessWidget {
         height: 50,
         width: 100,
         decoration: BoxDecoration(
-            // color: Colors.lightBlue,
+          // color: Colors.lightBlue,
             borderRadius: BorderRadius.circular(20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
-              "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/07/1296x728-header.jpg?w=1155&h=1528",
+              " $linkImage/$image",
               fit: BoxFit.cover,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Pasta with white souce"),
+              child: Text(name),
             )
           ],
         ),
