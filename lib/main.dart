@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:restaurantapp/modules/Cart/presentation/Cart.dart';
+import 'package:restaurantapp/modules/Favorite/presentation/Fav.dart';
 import 'package:restaurantapp/modules/Home/presentaion/Home.dart';
 import 'package:restaurantapp/modules/Home/presentaion/Product.dart';
 import 'package:restaurantapp/modules/Home/presentaion/ProductDetails.dart';
 import 'package:restaurantapp/modules/Registration/presentation/Registration.dart';
 import 'package:restaurantapp/modules/Registration/presentation/login.dart';
 import 'package:restaurantapp/modules/Registration/presentation/signup.dart';
+import 'package:restaurantapp/modules/Setings/presentation/Settings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+late SharedPreferences sharedPreferences;
 void main() async{
-
+  WidgetsFlutterBinding.ensureInitialized();
+  sharedPreferences=await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "Reg",
+      initialRoute: sharedPreferences.getString("id")==null ?"Reg" :"Home" ,
       home: Reg(),
       routes: {
         "Home":(context)=>Home(),
@@ -27,6 +32,9 @@ class MyApp extends StatelessWidget {
         "signup":(context)=>Signup(),
         "ProductDetails":(context)=>ProductDetails(),
         "Product":(context)=>Product(),
+        "Fav":(context)=>Fav(),
+        "Cart":(context)=>Cart(),
+        "Settings":(context)=>Settings()
       },
     );
   }

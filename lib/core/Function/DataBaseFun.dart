@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:path/path.dart';
+import 'package:restaurantapp/models/User.dart';
 
 
 String _basicAuth = 'Basic ' +
@@ -12,6 +13,7 @@ String _basicAuth = 'Basic ' +
 Map<String, String> myheaders = {
   'authorization': _basicAuth
 };
+
 class DataBaseFun{
 
   getReq(String url) async{
@@ -33,10 +35,15 @@ class DataBaseFun{
   }
   postReq(String url,Map data) async{
     try{
-      var res=await http.post(Uri.parse(url),body: data,headers: myheaders);
+      var res=await http.post(Uri.parse(url),body: data);
       if(res.statusCode==200)
       {
         var resbody=jsonDecode(res.body);
+        print("***************************ffffffffff");
+
+        print("${resbody}");
+        print("***************************");
+     User user=User.fromJson(resbody);
         return resbody;
       }
       else{

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:restaurantapp/core/Function/DataBaseFun.dart';
+import 'package:restaurantapp/core/Links.dart';
 import 'package:restaurantapp/core/Widgets/DrawerBar.dart';
 import 'package:restaurantapp/core/Widgets/Search.dart';
+import 'package:restaurantapp/main.dart';
+import 'package:restaurantapp/models/User.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,14 +14,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      drawer: DrawerBar(),
+      drawer:DrawerBar(),
       appBar: AppBar(
         backgroundColor: Colors.grey,
-      ),
+        actions: [
+          IconButton(onPressed: (){
+            sharedPreferences.clear();
+            Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
+          }, icon: Icon(Icons.exit_to_app))
+        ],),
       body: ListView(
         children: [
           Container(

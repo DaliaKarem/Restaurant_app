@@ -1,20 +1,58 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurantapp/core/Function/DataBaseFun.dart';
+import 'package:restaurantapp/core/Links.dart';
+import 'package:restaurantapp/main.dart';
+import 'package:restaurantapp/models/User.dart';
+import 'dart:io';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:path/path.dart';
 
 class DrawerBar extends StatelessWidget {
-  const DrawerBar({Key? key}) : super(key: key);
+   DrawerBar({Key? key}) : super(key: key);
+   DataBaseFun fun=DataBaseFun();
+   getdata()async
+  {
+    print("/////////////////////");
 
+    var res=await fun.postReq(getdataLink ,{
+      "user_id":sharedPreferences.getString("user_id"),
+    });
+    if(res['status']=="success")
+    {
+      print("//////////////////");
+      print(res);
+      return res;
+    }
+
+    else{
+      return AlertDialog(
+        title: const Text('Error'),
+        content: const Text('this Email signed up before'),
+      );
+    }
+    print(res);
+  }
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return    Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child:Image.network("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww&w=1000&q=80",width: 100,height: 100,fit: BoxFit.cover,) ,
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child:CachedNetworkImage(
+                    imageUrl: "$linkImage/${sharedPreferences.getString('user_img')}",
+                    placeholder: (context, url) => new CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => new Icon(Icons.error),
+                  ),
+                  //Image.network("$linkImage/${sharedPreferences.getString('user_img')}",width: 100,height: 100,fit: BoxFit.cover,) ,
+                  
+                ),
               ),
-            ),
               decoration: BoxDecoration(
                 color: Colors.grey,
                 // image: DecorationImage(
@@ -22,18 +60,17 @@ class DrawerBar extends StatelessWidget {
                 //
                 // )
               ),
-              accountName: Text("hmed"), accountEmail: Text("accountEmail")),
+              accountName: Text("${sharedPreferences.getString('user_name')}"), accountEmail: Text("${sharedPreferences.getString('user_email')}")),
           ListTile(
             leading: Icon(Icons.home),
             title: Text("Home"),
-
-            onTap: ()=>print("fav"),
+            onTap: ()=>Navigator.of(context).pushNamed("Home")
           ),
           ListTile(
             leading: Icon(Icons.favorite),
             title: Text("favorite"),
 
-            onTap: ()=>print("fav"),
+            onTap: ()=>Navigator.of(context).pushNamed("Fav"),
           ),
           ListTile(
             leading: Icon(Icons.shopping_cart),
@@ -46,19 +83,19 @@ class DrawerBar extends StatelessWidget {
                 child: Center(child: Text("5",style: TextStyle(color: Colors.white,fontSize: 12),)),
               ),
             ),
-            onTap: ()=>print("fav"),
+            onTap: ()=>Navigator.of(context).pushNamed("Cart"),
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text("Settngs"),
 
-            onTap: ()=>print("fav"),
+            onTap: ()=>Navigator.of(context).pushNamed("Settings"),
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text("Exit"),
-            onTap: ()=>print("fav"),
+            onTap: ()=>exit(0),
           ),
         ],
       ),

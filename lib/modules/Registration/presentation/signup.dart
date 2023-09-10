@@ -25,11 +25,7 @@ class _SignupState extends State<Signup> {
   File? file;
 
   signup() async {
-    if (file == null) {
-      return AwesomeDialog(
-          context: context, title: 'Error', desc: "You have to upload photo")
-        ..show();
-    }
+
     if (formstate.currentState!.validate()) {
       var res = await fun.postReqUser(
           SignLink,
@@ -59,6 +55,11 @@ class _SignupState extends State<Signup> {
         );
         print("SignUp fail");
       }
+    }
+    if (file == null) {
+      return AwesomeDialog(
+          context: context, title: 'Error', desc: "You have to upload photo")
+        ..show();
     }
   }
 

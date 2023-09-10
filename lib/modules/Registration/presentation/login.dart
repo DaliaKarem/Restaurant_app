@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:restaurantapp/core/Function/DataBaseFun.dart';
 import 'package:restaurantapp/core/Function/Valid.dart';
+import 'package:restaurantapp/core/Links.dart';
 import 'package:restaurantapp/core/Widgets/clip.dart';
 import 'package:restaurantapp/core/Widgets/textfield.dart';
+import 'package:restaurantapp/main.dart';
+import 'package:restaurantapp/models/User.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
 
@@ -13,6 +17,40 @@ class _loginState extends State<login> {
   GlobalKey<FormState> formstate=GlobalKey();
   TextEditingController email=TextEditingController();
   TextEditingController pass=TextEditingController();
+  DataBaseFun fun=DataBaseFun();
+  login()async{
+   if(formstate.currentState!.validate())
+     {
+       var res=await fun.postReq(LoginLink ,{
+         "email":email.text,
+         "pass":pass.text
+       });
+       if(res['status']=="success")
+       {
+         sharedPreferences.setString("user_id", res['data']['user_id'].toString());
+         sharedPreferences.setString("user_name", res['data']['user_name']);
+         sharedPreferences.setString("user_email", res['data']['user_email']);
+         sharedPreferences.setString("user_img", res['data']['user_img']);
+         Navigator.of(context).pushNamedAndRemoveUntil("Home", (route) => false);
+       }
+       else{
+         return AlertDialog(
+           title: const Text('Error'),
+           content: const Text('this Email signed up before'),
+           actions: <Widget>[
+             TextButton(
+               onPressed: () => Navigator.pop(context, 'Cancel'),
+               child: const Text('Cancel'),
+             ),
+             TextButton(
+               onPressed: () => Navigator.pop(context, 'OK'),
+               child: const Text('OK'),
+             ),
+           ],
+         );
+       }
+     }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +97,8 @@ class _loginState extends State<login> {
                   validInput(val!, 8, 20);
                 }),
               ),
-              MaterialButton(onPressed: (){
-                Navigator.of(context).pushNamed("Home");
+              MaterialButton(onPressed: ()async{
+                await login();
               },
               color: Colors.grey,
                 textColor: Colors.white,
