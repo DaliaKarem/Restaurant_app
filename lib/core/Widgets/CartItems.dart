@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurantapp/core/Widgets/Count.dart';
 import 'package:restaurantapp/modules/Cart/presentation/PayPage.dart';
 class cartItem extends StatefulWidget {
   const cartItem({Key? key}) : super(key: key);
@@ -22,47 +23,7 @@ class _cartItemState extends State<cartItem> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              Container(
-                width: 140,
-                height: 30,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    color: Colors.white),
-                child: Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.minimize,
-                          size: 10,
-                        )),
-                    VerticalDivider(
-                      width: 3,
-                      thickness: 2,
-                      indent: 5,
-                      endIndent: 0,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0, right: 2),
-                      child: Text("01"),
-                    ),
-                    VerticalDivider(
-                      width: 3,
-                      thickness: 2,
-                      indent: 5,
-                      endIndent: 0,
-                      color: Colors.grey,
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.minimize,
-                          size: 10,
-                        )),
-                  ],
-                ),
-              ),
+             Count(),
             ],
           ),
           Padding(padding: EdgeInsets.only(right: 300), child: Text("\$200")),
@@ -75,6 +36,8 @@ class _cartItemState extends State<cartItem> {
     );
   }
 }
+
+
 class totalPrice extends StatelessWidget {
   const totalPrice({Key? key}) : super(key: key);
 
