@@ -39,11 +39,8 @@ class DataBaseFun{
       if(res.statusCode==200)
       {
         var resbody=jsonDecode(res.body);
-        print("***************************ffffffffff");
 
         print("${resbody}");
-        print("***************************");
-     User user=User.fromJson(resbody);
         return resbody;
       }
       else{

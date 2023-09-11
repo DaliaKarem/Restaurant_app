@@ -27,6 +27,7 @@ class _loginState extends State<login> {
        });
        if(res['status']=="success")
        {
+
          sharedPreferences.setString("user_id", res['data']['user_id'].toString());
          sharedPreferences.setString("user_name", res['data']['user_name']);
          sharedPreferences.setString("user_email", res['data']['user_email']);

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: sharedPreferences.getString("id")==null ?"Reg" :"Home" ,
+      initialRoute: sharedPreferences.getString("user_id")==null ?"Reg" :"Home" ,
       home: Reg(),
       routes: {
         "Home":(context)=>Home(),

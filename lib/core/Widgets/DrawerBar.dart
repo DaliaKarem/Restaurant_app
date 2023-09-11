@@ -18,7 +18,7 @@ class DrawerBar extends StatelessWidget {
     print("/////////////////////");
 
     var res=await fun.postReq(getdataLink ,{
-      "user_id":sharedPreferences.getString("user_id"),
+      "id":sharedPreferences.getString("user_id"),
     });
     if(res['status']=="success")
     {
@@ -41,26 +41,43 @@ class DrawerBar extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                child: ClipOval(
-                  child:CachedNetworkImage(
-                    imageUrl: "$linkImage/${sharedPreferences.getString('user_img')}",
-                    placeholder: (context, url) => new CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => new Icon(Icons.error),
-                  ),
-                  //Image.network("$linkImage/${sharedPreferences.getString('user_img')}",width: 100,height: 100,fit: BoxFit.cover,) ,
-                  
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                // image: DecorationImage(
-                //   image: NetworkImage(""),
-                //
-                // )
-              ),
-              accountName: Text("${sharedPreferences.getString('user_name')}"), accountEmail: Text("${sharedPreferences.getString('user_email')}")),
+          FutureBuilder(
+            future: getdata(),
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if(snapshot.hasData)
+                {
+                  if(snapshot.data['status']!='success')
+                    {
+                      return Text("Error");
+                    }
+                  else{
+                    return  UserAccountsDrawerHeader(
+                        currentAccountPicture: CircleAvatar(
+                          child: ClipOval(
+                            child:
+                            // CachedNetworkImage(
+                            //   imageUrl: "$linkImage/${snapshot.data['data']['user_img']}",
+                            //   placeholder: (context, url) => new CircularProgressIndicator(),
+                            //   errorWidget: (context, url, error) => new Icon(Icons.error),
+                            // ),
+                            Image.network("$linkImage/${snapshot.data['data']['user_img']}",width: 100,height: 100,fit: BoxFit.cover,) ,
+
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          // image: DecorationImage(
+                          //   image: NetworkImage(""),
+                          //
+                          // )
+                        ),
+                        accountName: Text("${snapshot.data['data']['user_name']}"), accountEmail: Text("${snapshot.data['data']['user_email']}"));
+                  }
+                }
+              return Text("data");
+            },
+
+          ),
           ListTile(
             leading: Icon(Icons.home),
             title: Text("Home"),
