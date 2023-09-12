@@ -9,6 +9,7 @@ import 'package:restaurantapp/modules/Registration/presentation/Registration.dar
 import 'package:restaurantapp/modules/Registration/presentation/login.dart';
 import 'package:restaurantapp/modules/Registration/presentation/signup.dart';
 import 'package:restaurantapp/modules/Setings/presentation/Settings.dart';
+import 'package:restaurantapp/modules/onboarding/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences sharedPreferences;
@@ -23,9 +24,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: sharedPreferences.getString("user_id")==null ?"Reg" :"Home" ,
-      home: Reg(),
+      initialRoute: sharedPreferences.getString("user_id")==null ?"onboarding" :"Home" ,
+      home: onboarding(),
       routes: {
+        "onboarding":(context)=>onboarding(),
         "Home":(context)=>Home(),
         "Reg":(context)=>Reg(),
         "login":(context)=>login(),

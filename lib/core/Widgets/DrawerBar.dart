@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:restaurantapp/core/Function/DataBaseFun.dart';
 import 'package:restaurantapp/core/Links.dart';
 import 'package:restaurantapp/main.dart';
@@ -9,9 +10,10 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:path/path.dart';
-
+late File _image;
 class DrawerBar extends StatelessWidget {
    DrawerBar({Key? key}) : super(key: key);
+
    DataBaseFun fun=DataBaseFun();
    getdata()async
   {
@@ -24,6 +26,9 @@ class DrawerBar extends StatelessWidget {
     {
       print("//////////////////");
       print(res);
+      _image=File("$linkImage/${res['data']['user_img']}");
+      print("image is $_image");
+
       return res;
     }
 
@@ -60,8 +65,8 @@ class DrawerBar extends StatelessWidget {
                             //   placeholder: (context, url) => new CircularProgressIndicator(),
                             //   errorWidget: (context, url, error) => new Icon(Icons.error),
                             // ),
-                            Image.network("$linkImage/${snapshot.data['data']['user_img']}",width: 100,height: 100,fit: BoxFit.cover,) ,
-
+                           // Image.network("$linkImage/${snapshot.data['data']['user_img']}",width: 100,height: 100,fit: BoxFit.cover,) ,
+                              Image.file(_image)
                           ),
                         ),
                         decoration: BoxDecoration(

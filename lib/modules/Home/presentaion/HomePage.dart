@@ -20,14 +20,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      drawer:DrawerBar(),
+      key: _scaffoldKey,
+      endDrawerEnableOpenDragGesture: false,
+    drawer:  DrawerBar(),
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        iconTheme: IconThemeData(color: Colors.blue),
+        leading: IconButton(
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+            },
+          icon: Icon(
+            Icons.menu, // Set your desired icon color here
+          ),
+        ),
+        backgroundColor: Colors.white,
         actions: [
           IconButton(onPressed: (){
             sharedPreferences.clear();
@@ -37,7 +48,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: [
           Container(
-            color: Colors.grey[200],
+           // color: Colors.blue[200],
             child: Column(
               children: [
                 Search(),
@@ -79,7 +90,6 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 10,),
           Container(
-            color: Colors.grey[200],
             child: Column(
               children: [
                 Row(

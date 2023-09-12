@@ -66,147 +66,143 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            color: Colors.grey[350],
-            child: Form(
-              key: formstate,
-              child: Column(
-                children: [
-                  Stack(
+      body: SingleChildScrollView(
+        child: Container(
+          child: Form(
+            key: formstate,
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    ClipPath(
+                      clipper: WaveClipper(),
+                      child: Container(
+                        padding: const EdgeInsets.only(bottom: 450),
+                        color: Colors.blue.withOpacity(.8),
+                        height: 220,
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                    ClipPath(
+                      clipper: WaveClipper(waveDeep: 0, waveDeep2: 100),
+                      child: Container(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        color: Colors.blue.withOpacity(.5),
+                        height: 180,
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: CustomTextForm(
+                      hint: "Enter Name",
+                      mycontroller: name,
+                      validator: (val) {
+                        validInput(val!, 2, 10);
+                      }),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: CustomTextForm(
+                      hint: "Enter Email",
+                      mycontroller: email,
+                      validator: (val) {
+                        validInput(val!, 8, 20);
+                      }),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: CustomTextForm(
+                      hint: "Enter Password",
+                      mycontroller: pass,
+                      validator: (val) {
+                        validInput(val!, 8, 20);
+                      }),
+                ),
+                MaterialButton(
+                  onPressed: () async {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          height: 100,
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  XFile? xfile = await ImagePicker()
+                                      .pickImage(
+                                      source: ImageSource.gallery);
+                                  Navigator.of(context).pop();
+                                  file = File(xfile!.path);
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.all(10),
+                                  child: Text(" from Galary"),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  XFile? xfile = await ImagePicker()
+                                      .pickImage(
+                                      source: ImageSource.camera);
+                                  Navigator.of(context).pop();
+                                  file = File(xfile!.path);
+                                  setState(() {
+
+                                  });
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.all(10),
+                                  child: Text("from Camera"),
+                                ),
+                              )
+                            ],
+                          ),
+                        ));
+                  },
+                  child: Text("choose image"),
+                  textColor: Colors.white,
+                  color: file == null ? Colors.blue.shade900 : Colors.lightBlue,
+                ),
+                MaterialButton(
+
+                  onPressed: () async {
+                    print("file is:    $file");
+                    await signup();
+                  },
+                  child: Text("Sign Up"),
+                  textColor: Colors.white,
+                  color: Colors.blue,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Row(
                     children: [
-                      ClipPath(
-                        clipper: WaveClipper(),
-                        child: Container(
-                          padding: const EdgeInsets.only(bottom: 450),
-                          color: Colors.black.withOpacity(.8),
-                          height: 220,
-                          alignment: Alignment.center,
-                        ),
-                      ),
-                      ClipPath(
-                        clipper: WaveClipper(waveDeep: 0, waveDeep2: 100),
-                        child: Container(
-                          padding: const EdgeInsets.only(bottom: 50),
-                          color: Colors.black.withOpacity(.5),
-                          height: 180,
-                          alignment: Alignment.center,
-                        ),
-                      ),
+                      Text("already have an account "),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacementNamed("login");
+                          },
+                          child: Text("login"))
                     ],
                   ),
-                  Container(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: CustomTextForm(
-                        hint: "Enter Name",
-                        mycontroller: name,
-                        validator: (val) {
-                          validInput(val!, 2, 10);
-                        }),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: CustomTextForm(
-                        hint: "Enter Email",
-                        mycontroller: email,
-                        validator: (val) {
-                          validInput(val!, 8, 20);
-                        }),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: CustomTextForm(
-                        hint: "Enter Password",
-                        mycontroller: pass,
-                        validator: (val) {
-                          validInput(val!, 8, 20);
-                        }),
-                  ),
-                  MaterialButton(
-                    onPressed: () async {
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (context) => Container(
-                            height: 100,
-                            child: Column(
-                              children: [
-                                InkWell(
-                                  onTap: () async {
-                                    XFile? xfile = await ImagePicker()
-                                        .pickImage(
-                                        source: ImageSource.gallery);
-                                    Navigator.of(context).pop();
-                                    file = File(xfile!.path);
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    width: double.infinity,
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(" from Galary"),
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () async {
-                                    XFile? xfile = await ImagePicker()
-                                        .pickImage(
-                                        source: ImageSource.camera);
-                                    Navigator.of(context).pop();
-                                    file = File(xfile!.path);
-                                    setState(() {
+                ),
 
-                                    });
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    width: double.infinity,
-                                    padding: EdgeInsets.all(10),
-                                    child: Text("from Camera"),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ));
-                    },
-                    child: Text("choose image"),
-                    textColor: Colors.white,
-                    color: file == null ? Colors.grey : Colors.lightBlue,
-                  ),
-                  MaterialButton(
-
-                    onPressed: () async {
-                      print("file is:    $file");
-                      await signup();
-                    },
-                    child: Text("Sign Up"),
-                    textColor: Colors.white,
-                    color: Colors.grey,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      children: [
-                        Text("already have an account "),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pushReplacementNamed("login");
-                            },
-                            child: Text("login"))
-                      ],
-                    ),
-                  ),
-
-                ],
-              ),
+              ],
             ),
           ),
-        ],
-
-      ),
+        ),
+      )
     );
   }
 
