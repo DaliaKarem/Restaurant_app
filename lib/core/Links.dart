@@ -6,6 +6,6 @@ const String getdataLink="$Baselink/auth/getData.php";
 const String linkImage="http://10.0.2.2/restaurant/upload";
 const String allFood="$Baselink/order/viewallfood.php";
 
-const String addfav="$Baselink/order/addfav.php";
-const String viewfav="$Baselink/order/viewfav.php";
-const String deletefav="$Baselink/order/deletefav.php";
+const String addfav="$Baselink/order/fav/addfav.php";
+const String viewfav="$Baselink/order/fav/viewfav.php";
+const String removefav="$Baselink/order/fav/removefav.php";
