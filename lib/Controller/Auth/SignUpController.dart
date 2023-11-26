@@ -39,14 +39,14 @@ class SignUpControllerImp extends SignUpController{
 
   @override
   gotoLogin() {
-    print("Go to SignUp");
-    Get.offAllNamed(routeApp.Login);
+    print("Go to Login");
+    Get.toNamed(routeApp.Login);
   }
 
   @override
   gotoSendVerf() {
-    // TODO: implement gotoSendVerf
-    throw UnimplementedError();
+    //Get.offNamed(routeApp.verifySignCode);
+    Get.toNamed(routeApp.verifySignCode);
   }
 
 }

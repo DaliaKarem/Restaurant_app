@@ -3,17 +3,17 @@ import 'package:restaurantapp/core/const/color.dart';
 
 class ButtonInSign extends StatelessWidget {
   ButtonInSign(
-      {Key? key, required this.textbutton, this.textColor, this.ButonColor})
+      {Key? key, required this.textbutton, this.textColor, this.ButonColor,required this.onPressed})
       : super(key: key);
   String? textbutton;
   Color? textColor, ButonColor;
-
+  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
    return Container(
      width: 200,
       child: MaterialButton(
-        onPressed: () {},
+        onPressed:onPressed ,
         child: Text(
           textbutton!,
           style: TextStyle(fontSize: 18),

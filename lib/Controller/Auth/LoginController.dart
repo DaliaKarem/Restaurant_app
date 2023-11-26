@@ -33,17 +33,21 @@ class LoginControllerImp extends LoginController{
 
   @override
   gotoHome() {
+    Get.offAllNamed(routeApp.Home);
   }
 
   @override
   gotoForget() {
+    print("Go to Forget");
+
+    Get.toNamed(routeApp.ForgetPass);
 
   }
 
   @override
   gotoSignUp() {
     print("Go to SignUp");
-    Get.offAllNamed(routeApp.SignUp);
+    Get.offNamed(routeApp.SignUp);
   }
 
 }

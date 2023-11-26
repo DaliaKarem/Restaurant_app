@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:restaurantapp/controller/Auth/LoginController.dart';
 import 'package:restaurantapp/controller/Auth/SignUpController.dart';
 import 'package:restaurantapp/core/const/color.dart';
+import 'package:restaurantapp/core/functions/ValidatorText.dart';
 import 'package:restaurantapp/view/widget/Shared/ButtonInSign.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
@@ -41,18 +42,30 @@ class SignUp extends StatelessWidget {
                   height: 50,
                 ),
                 TextFormFields(
+                  validator: (val){
+                    return ValidatorInput("name",val!,6,12);
+                  },
+                  isNum:false,
                   hint: '',
                   lable: 'Name',
                   icons: Icon(Icons.person),
                   controllerText: controllerImp.Email!,
                 ),
                 TextFormFields(
+                  validator: (val){
+                    return ValidatorInput("email",val!,6,12);
+                  },
+                  isNum:false,
                   hint: 'yourEmail@gmail.com',
                   lable: 'Email',
                   icons: Icon(Icons.alternate_email),
                   controllerText: controllerImp.Email!,
                 ),
                 TextFormFields(
+                  validator: (val){
+                    return ValidatorInput("phone",val!,6,12);
+                  },
+                  isNum:true,
                   hint: '',
                   lable: 'Phone Number',
                   icons: Icon(Icons.phone_android),
@@ -60,6 +73,10 @@ class SignUp extends StatelessWidget {
                 ),
                 GetBuilder<SignUpControllerImp>(builder:(controller){
                   return TextFormFields(
+                      validator: (val){
+                        return ValidatorInput("pass",val!,6,12);
+                      },
+                      isNum:false,
                       press: controllerImp.Press,
                       onTapIcon: () {
                         controllerImp.ShowPass();
@@ -76,7 +93,7 @@ class SignUp extends StatelessWidget {
                   height: 10,
                 ),
                 ButtonInSign(
-                  textbutton: 'Sign Up',
+                  textbutton: 'Sign Up', onPressed: ()=>controllerImp.gotoSendVerf(),
                 ),
                 Row(
                   children: [

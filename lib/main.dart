@@ -6,6 +6,19 @@ import 'package:restaurantapp/Core/services/services.dart';
 import 'package:restaurantapp/Routes.dart';
 import 'package:restaurantapp/core/const/appTheme.dart';
 
+
+
+//Get.toNamed
+//
+// You can navigate from one page to another, and you can also go back by clicking the back button.
+//
+// Get.offNamed
+//
+// You can navigate from one page to another, but when you click on the back icon, it will back you 2 steps.
+//
+// Get.offAllNamed
+//
+// You can navigate from one page to another, but when you click on the back icon, you can't go back.
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServies();
