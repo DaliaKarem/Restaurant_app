@@ -7,7 +7,7 @@ abstract class verificationCode_ForgetController extends GetxController{
 
 }
 class verificationCode_ForgetControllerImp extends verificationCode_ForgetController{
- // late TextEditingController? Email;
+  // late TextEditingController? Email;
 
   @override
   void onInit() {
@@ -16,7 +16,7 @@ class verificationCode_ForgetControllerImp extends verificationCode_ForgetContro
   }
   @override
   void dispose() {
-   // Email?.dispose();
+    // Email?.dispose();
     super.dispose();
   }
 

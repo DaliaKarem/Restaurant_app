@@ -3,9 +3,9 @@ import 'package:restaurantapp/core/const/color.dart';
 import 'package:restaurantapp/view/widget/StartPage/BodyText.dart';
 import 'package:restaurantapp/view/widget/StartPage/Button.dart';
 class UnderImage extends StatelessWidget {
-   UnderImage({Key? key,required this.headText,required this.bodyText,this.button1,this.onPressButton1,this.button2,this.onPressButton2}) : super(key: key);
- String? headText,bodyText,button1,button2;
-   void Function()? onPressButton1,onPressButton2;
+  UnderImage({Key? key,required this.headText,required this.bodyText,this.button1,this.onPressButton1,this.button2,this.onPressButton2}) : super(key: key);
+  String? headText,bodyText,button1,button2;
+  void Function()? onPressButton1,onPressButton2;
   @override
   Widget build(BuildContext context) {
     return Positioned(

@@ -10,8 +10,8 @@ class ButtonInSign extends StatelessWidget {
   void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-   return Container(
-     width: 200,
+    return Container(
+      width: 200,
       child: MaterialButton(
         onPressed:onPressed ,
         child: Text(

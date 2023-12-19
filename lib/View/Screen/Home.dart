@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/controller/HomeController.dart';
+import 'package:restaurantapp/controller/HomeScreenController.dart';
 import 'package:restaurantapp/core/const/color.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
 

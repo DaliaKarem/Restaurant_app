@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
 
-abstract class verificationCodeController extends GetxController{
-gotoSucess();
+abstract class ForgetController extends GetxController{
+  gotoVeriicationCode_Forget();
+
 }
-class verificationCodeControllerImp extends verificationCodeController{
+class ForgetControllerImp extends ForgetController{
   late TextEditingController? Email;
 
   @override
@@ -20,9 +21,9 @@ class verificationCodeControllerImp extends verificationCodeController{
   }
 
   @override
-  gotoSucess() {
-    Get.toNamed(routeApp.SuccessSignUp);
-
+  gotoVeriicationCode_Forget() {
+    // Get.offAllNamed(routeApp.verifySignCode);
+    Get.toNamed(routeApp.Verification_Forget);
 
   }
 

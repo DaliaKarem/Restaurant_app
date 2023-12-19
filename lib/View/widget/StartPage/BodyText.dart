@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class BodyTextForSign extends StatelessWidget {
   BodyTextForSign({Key? key,required this.bodyText}) : super(key: key);
-String bodyText;
+  String bodyText;
   @override
   Widget build(BuildContext context) {
     return Container(

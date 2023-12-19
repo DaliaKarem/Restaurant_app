@@ -1,11 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/src/routes/route_middleware.dart';
+import 'package:get/get.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
-
-import '../services/services.dart';
+import 'package:restaurantapp/core/services/services.dart';
 
 class middelware extends GetMiddleware{
   //priority
@@ -20,7 +17,7 @@ class middelware extends GetMiddleware{
     }
     if(myservices.sharedPreferences.getString("onboarding")=="1")
       {
-        return RouteSettings(name: routeApp.SignUp);
+        return RouteSettings(name: routeApp.Login);
       }
 
   }

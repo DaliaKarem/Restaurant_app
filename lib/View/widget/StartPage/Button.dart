@@ -4,22 +4,22 @@ import 'package:restaurantapp/controller/StartPageController.dart';
 import 'package:restaurantapp/core/const/color.dart';
 
 class Buttons extends GetView<StartPageControllerImp> {
-   Buttons({Key? key,required this.textbutton,required this.onPressButton}) : super(key: key);
-   void Function()? onPressButton;
-   String ?textbutton;
+  Buttons({Key? key,required this.textbutton,required this.onPressButton}) : super(key: key);
+  void Function()? onPressButton;
+  String ?textbutton;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(onPressed: (){
       if(textbutton=="Login")
-        {
-          controller.gotoLogin();
-        }
+      {
+        controller.gotoLogin();
+      }
       else if(textbutton=="Get Started")
-        {
-          controller.gotoOnBoarding();
-        }
+      {
+        controller.gotoOnBoarding();
+      }
     }, child: Text(textbutton!,style: TextStyle(fontSize: 15),),
-    textColor: (textbutton=="Login")?colorApp.primary:Colors.white,
+      textColor: (textbutton=="Login")?colorApp.primary:Colors.white,
       color: (textbutton=="Login")?colorApp.background:colorApp.primary,
       shape:RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10), // Adjust the border radius as needed

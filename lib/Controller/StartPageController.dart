@@ -2,13 +2,13 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:restaurantapp/Core/services/services.dart';
+import 'package:restaurantapp/core/services/services.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
 
 abstract class StartPageController extends GetxController
 {
   gotoOnBoarding();
- gotoLogin();
+  gotoLogin();
 }
 class StartPageControllerImp extends StartPageController {
   myServices myservices=Get.find();

@@ -2,9 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
+import 'package:restaurantapp/core/services/services.dart';
 import 'package:restaurantapp/data/datasource/static/static.dart';
-
-import '../Core/services/services.dart';
 
 abstract class onBoardingController extends GetxController
 {

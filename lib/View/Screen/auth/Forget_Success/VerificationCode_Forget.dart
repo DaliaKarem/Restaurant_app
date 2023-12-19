@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:restaurantapp/controller/Auth/Forget&Success/VerficationCode_FogetController.dart';
+import 'package:restaurantapp/controller/Auth/Forget_Success/VerifictionCode_ForgetController.dart';
 import 'package:restaurantapp/view/widget/Shared/BodyText.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:otp_text_field/otp_text_field.dart';

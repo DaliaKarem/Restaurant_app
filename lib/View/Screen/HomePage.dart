@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   Get.put(HomePageControllerImp());
+    Get.put(homePageControllerImp());
     return Scaffold(
       body: Container(
         child: ListView(
@@ -39,9 +39,9 @@ class HomePage extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.6),
                         child: Center(
                             child: Text(
-                          "Welcome to Our Restaurant",
-                          style: Theme.of(context).textTheme.headline1,
-                        )),
+                              "Welcome to Our Restaurant",
+                              style: Theme.of(context).textTheme.headline1,
+                            )),
                       ),
                       Positioned(
                         bottom: -50,

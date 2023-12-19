@@ -6,12 +6,12 @@ ValidatorInput(String type,String val,int min,int max) {
     return "This Field Required";
   }
   if(type=="username")
-  {
-    if(!GetUtils.isUsername(val))
     {
-      return "Not Valid $type ";
+      if(!GetUtils.isUsername(val))
+        {
+          return "Not Valid $type ";
+        }
     }
-  }
   if(type=="email")
   {
     if(!GetUtils.isEmail(val))

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:restaurantapp/controller/Auth/LoginController.dart';
 import 'package:restaurantapp/core/const/color.dart';
-import 'package:restaurantapp/core/functions/ValidatorText.dart';
+import 'package:restaurantapp/core/functions/ValidatorInput.dart';
 import 'package:restaurantapp/view/widget/Shared/ButtonInSign.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
@@ -48,7 +48,7 @@ class Login extends StatelessWidget {
                   hint: 'yourEmail@gmail.com',
                   lable: 'Email',
                   icons: Icon(Icons.person),
-                  controllerText: controllerImp.Email!,
+                  controllerText: controllerImp.email!,
                 ),
 
                 GetBuilder<LoginControllerImp>(builder:(controller){
@@ -59,13 +59,13 @@ class Login extends StatelessWidget {
                       isNum:false,
                       press: controllerImp.Press,
                       onTapIcon: () {
-                        controllerImp.ShowPass();
+                        controllerImp.showPass();
                       },
                       icons2: Icon(Icons.visibility_off),
                       hint: '',
                       lable: 'Password',
                       icons: Icon(Icons.remove_red_eye),
-                      controllerText: controllerImp.Pass!
+                      controllerText: controllerImp.password!
                   );
                 } ),
 
@@ -73,7 +73,7 @@ class Login extends StatelessWidget {
                     padding: EdgeInsets.only(right: 10),
                     alignment: Alignment.topRight,
                     child: TextButton(onPressed: () {
-                      controllerImp.gotoForget();
+                      controllerImp.goToForget();
                     },
                       child: Text("Forget Pass?",
                           textAlign: TextAlign.right,
@@ -81,13 +81,13 @@ class Login extends StatelessWidget {
                               color: colorApp.primary,
                               fontSize: 15,
                               decoration: TextDecoration.underline)),
-                        )),
+                    )),
                 SizedBox(
                   height: 10,
                 ),
                 ButtonInSign(
                   textbutton: 'Login', onPressed: () {
-                    controllerImp.gotoHome();
+                  controllerImp.login();
                 },
                 ),
                 Row(
@@ -102,7 +102,7 @@ class Login extends StatelessWidget {
                         child: TextButton(
                             onPressed: () {
                               print("Got ot Sig up");
-                              controllerImp.gotoSignUp();
+                              controllerImp.goToSignUp();
                             },
                             child: Text(
                               "Sign Up",

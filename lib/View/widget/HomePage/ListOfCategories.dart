@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/controller/HomeController.dart';
 import 'package:restaurantapp/controller/HomePageController.dart';
-class ListOfCategories extends GetView<HomePageControllerImp> {
+class ListOfCategories extends GetView<homePageControllerImp> {
   const ListOfCategories({Key? key}) : super(key: key);
 
   @override

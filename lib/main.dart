@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurantapp/Binding/binding.dart';
-import 'package:restaurantapp/Core/services/services.dart';
+import 'package:restaurantapp/core/services/services.dart';
 import 'package:restaurantapp/Routes.dart';
 import 'package:restaurantapp/core/const/appTheme.dart';
 
@@ -42,4 +41,5 @@ class MyApp extends StatelessWidget {
       // routes: routes
     );
   }
+
 }

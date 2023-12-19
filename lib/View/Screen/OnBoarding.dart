@@ -18,29 +18,29 @@ class onBoarding extends StatelessWidget {
       child: Scaffold(
           body: SafeArea(
               child: Column(
-        children: [
-          Expanded(flex: 3, child: slidder()),
-          Expanded(
-              flex: 1,
-              child: Column(
                 children: [
-                  dotcontroller(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Button(
-                      text: "Continue",
-                      color: colorApp.primary,
-                      textcolor: Colors.white),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Button(
-                      text: "Skip", color: Colors.white, textcolor: Colors.black),
+                  Expanded(flex: 3, child: slidder()),
+                  Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: [
+                          dotcontroller(),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Button(
+                              text: "Continue",
+                              color: colorApp.primary,
+                              textcolor: Colors.white),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Button(
+                              text: "Skip", color: Colors.white, textcolor: Colors.black),
+                        ],
+                      ))
                 ],
-              ))
-        ],
-      ))),
+              ))),
     );
   }
 }

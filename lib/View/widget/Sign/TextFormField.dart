@@ -4,14 +4,14 @@ import 'package:restaurantapp/core/const/color.dart';
 class TextFormFields extends StatelessWidget {
   TextFormFields(
       {Key? key,
-      this.validator,
-      required this.isNum,
-      required this.hint,
-      this.lable,
-      required this.icons, this.controllerText,
-      this.icons2,
-      this.press,
-      this.onTapIcon})
+        this.validator,
+        required this.isNum,
+        required this.hint,
+        this.lable,
+        required this.icons, this.controllerText,
+        this.icons2,
+        this.press,
+        this.onTapIcon})
       : super(key: key);
   String? lable, hint;
   bool? press;
@@ -28,7 +28,7 @@ class TextFormFields extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       child: TextFormField(
         keyboardType:
-            (isNum == true) ? TextInputType.phone : TextInputType.text,
+        (isNum == true) ? TextInputType.phone : TextInputType.text,
         validator: validator,
         controller: controllerText,
         obscureText: press == null || press == false ? false : true,
@@ -39,7 +39,7 @@ class TextFormFields extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide:
-                BorderSide(color: colorApp.primary), // Change color here
+            BorderSide(color: colorApp.primary), // Change color here
           ),
           labelText: lable,
           labelStyle: TextStyle(color: colorApp.primary),

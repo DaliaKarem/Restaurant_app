@@ -21,7 +21,7 @@ class StartPage extends StatelessWidget {
           UnderImage(
             headText: "Eat, Enjoy, Explore.",
             bodyText:
-                "Embark on a culinary adventure with nearby eateries, where flavors fuse and gastronomic delights await your palate.",
+            "Embark on a culinary adventure with nearby eateries, where flavors fuse and gastronomic delights await your palate.",
             button1: "Login",
 
             button2: "Get Started",

@@ -9,11 +9,11 @@ class slidder extends GetView<onBoardingControllerImp> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: controller.pageController,
-      onPageChanged:(val){
-        print("page is $val");
-        controller.dotChange(val);
-      } ,
+        controller: controller.pageController,
+        onPageChanged:(val){
+          print("page is $val");
+          controller.dotChange(val);
+        } ,
         itemCount: onBoardingList.length,
         itemBuilder: (context, i) {
           return Column(

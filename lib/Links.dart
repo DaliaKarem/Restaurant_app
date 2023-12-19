@@ -5,6 +5,6 @@ class linkapp{
   //Category
   static const String Category="$linkServer/Category";
   //Auth
-  static const String Signup="$linkServer/Auth/signp";
+  static const String Signup="$linkServer/Auth/signup";
 
 }

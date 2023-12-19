@@ -19,8 +19,8 @@ class ResetPassControllerImp extends ResetPassController{
   }
   @override
   void dispose() {
-     Pass?.dispose();
-     rePass?.dispose();
+    Pass?.dispose();
+    rePass?.dispose();
     super.dispose();
   }
   ShowPass() {

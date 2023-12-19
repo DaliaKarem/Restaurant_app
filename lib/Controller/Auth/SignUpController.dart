@@ -1,77 +1,64 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/core/class/HandlingData.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:restaurantapp/core/class/satusReq.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
 import 'package:restaurantapp/core/functions/handlingData.dart';
 import 'package:restaurantapp/data/datasource/remote/auth/SignupData.dart';
-import 'package:restaurantapp/core/class/crud.dart';
-
 abstract class SignUpController extends GetxController{
   SignUp();
-  gotoSendVerf();
-  gotoLogin();
+  goToLogin();
+  goToForget();
 }
-class SignUpControllerImp extends SignUpController{
-  bool Press=true;
-  late TextEditingController? Email;
-  late TextEditingController? Pass;
-  late TextEditingController? Name;
-  late TextEditingController? Phone;
+class SignUpControllerImp extends SignUpController {
+  bool Press = true;
+  late TextEditingController email;
+  late TextEditingController password;
+  late TextEditingController userName;
+  late TextEditingController phone;
   GlobalKey<FormState>formstate=GlobalKey<FormState>();
   List getdata=[];
-  statusReq? status;
+   statusReq? status;
   signUpData signupdata=signUpData(Get.find());
-
-  @override
-  void onInit() {
-    Email=TextEditingController();
-    Pass=TextEditingController();
-    Name=TextEditingController();
-    Phone=TextEditingController();
-    super.onInit();
+  showPass()
+  {
+    Press=Press==true?false:true;
+    update();
   }
   @override
+  void onInit() {
+    // TODO: implement onInit
+    email = TextEditingController();
+    password = TextEditingController();
+    userName= TextEditingController();
+    phone= TextEditingController();
+  }
+
+  @override
   void dispose() {
-    Email?.dispose();
-    Pass?.dispose();
-    Phone?.dispose();
-    Name?.dispose();
+    email.dispose();
+    password.dispose();
+    userName.dispose();
+    phone.dispose();
     super.dispose();
   }
 
-  ShowPass() {
-    Press=Press==true?false:true;
-    print(Press);
-    update();
-  }
-
-  @override
-  gotoLogin() {
-    print("Go to Login");
-    Get.toNamed(routeApp.Login);
-  }
-
-  @override
-  gotoSendVerf() {
-    //Get.offNamed(routeApp.verifySignCode);
-    Get.toNamed(routeApp.verifySignCode);
-  }
 
   @override
   SignUp()async {
     var form=formstate.currentState;
+    print("Formmmmmm");
     if(form!.validate()){
       status=statusReq.loading;
       update();
-      var res=await signupdata.postData(Name!.text,Email!.text,Pass!.text,Phone!.text);
+      var res=await signupdata.postData(userName.text,email.text,password.text,phone.text);
       status=handlingData(res);
       print("=================================$res");
       if(status==statusReq.success)
       {
-        if(res['status']=='success')
+        if(res['success']=='success')
         {
-          Get.offNamed(routeApp.Login,arguments: {"email":Email!.text});
-         // Get.offNamed(routeApp.verifySignCode,arguments: {"email":email.text});
+          Get.offNamed(routeApp.verifySignCode,arguments: {"email":email.text});
         }
         else{
           Get.defaultDialog(title: "Warning",middleText: "Email or Phone  Exists");
@@ -89,4 +76,12 @@ class SignUpControllerImp extends SignUpController{
 
   }
 
+  @override
+  goToLogin() {
+    Get.toNamed(routeApp.Login);
+  }
+  @override
+  goToForget() {
+    Get.toNamed(routeApp.ForgetPass);
+  }
 }

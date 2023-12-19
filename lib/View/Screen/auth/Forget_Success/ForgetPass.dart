@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/controller/Auth/Forget&Success/ForgetController.dart';
-import 'package:restaurantapp/core/functions/ValidatorText.dart';
+import 'package:restaurantapp/controller/Auth/Forget_Success/ForgetController.dart';
+import 'package:restaurantapp/core/functions/ValidatorInput.dart';
 import 'package:restaurantapp/view/widget/Shared/ButtonInSign.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
@@ -25,7 +25,7 @@ class ForgetPass extends StatelessWidget {
           ),
           BodyTextForSign(
               bodyText:
-                  "Enter Your Email and we will send to you verification code "),
+              "Enter Your Email and we will send to you verification code "),
           SizedBox(
             height: 20,
           ),

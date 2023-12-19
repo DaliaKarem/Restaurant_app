@@ -1,13 +1,12 @@
-
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
+import 'package:restaurantapp/view/Screen/StarPage.dart';
+import 'package:restaurantapp/view/Screen/auth/Forget_Success/ForgetPass.dart';
+import 'package:restaurantapp/view/Screen/auth/Forget_Success/ResetPass.dart';
+import 'package:restaurantapp/view/Screen/auth/Forget_Success/SuccessSign.dart';
+import 'package:restaurantapp/view/Screen/auth/Forget_Success/VerificationCode.dart';
+import 'package:restaurantapp/view/Screen/auth/Forget_Success/VerificationCode_Forget.dart';
 import 'package:restaurantapp/view/screen/Home.dart';
-import 'package:restaurantapp/view/screen/StartPage.dart';
-import 'package:restaurantapp/view/screen/auth/Forget&Success/ForgetPass.dart';
-import 'package:restaurantapp/view/screen/auth/Forget&Success/ResetPass.dart';
-import 'package:restaurantapp/view/screen/auth/Forget&Success/SuccessSign.dart';
-import 'package:restaurantapp/view/screen/auth/Forget&Success/VerificationCode.dart';
-import 'package:restaurantapp/view/screen/auth/Forget&Success/VerificationCode_Forget.dart';
 import 'package:restaurantapp/view/screen/auth/Login.dart';
 import 'package:restaurantapp/view/screen/auth/SignUp.dart';
 
