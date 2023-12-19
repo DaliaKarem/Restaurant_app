@@ -23,7 +23,7 @@ class ForgetPass extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          BodyText(
+          BodyTextForSign(
               bodyText:
                   "Enter Your Email and we will send to you verification code "),
           SizedBox(

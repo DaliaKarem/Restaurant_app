@@ -8,6 +8,7 @@ import 'package:restaurantapp/view/widget/Shared/BodyText.dart';
 import 'package:restaurantapp/view/widget/Shared/ButtonInSign.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
+import 'package:restaurantapp/view/widget/StartPage/BodyText.dart';
 class VerificaionCode extends StatelessWidget {
   const VerificaionCode({Key? key}) : super(key: key);
 
@@ -21,7 +22,8 @@ class VerificaionCode extends StatelessWidget {
           HeadLineText(headline: "Verification Code"),
           SizedBox(height: 20,),
 
-          BodyText(textBody: 'Enter Code Which is sent in your Email',),
+          BodyTextForSign(
+            bodyText: 'Enter Code Which is sent in your Email',),
           SizedBox(height: 60,),
 
           OTPTextField(

@@ -16,7 +16,7 @@ Function()? onPressed;
           text!,style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: fontSize??17,
-          color: color ??Colors.white,
+          color: color ??Colors.black54,
             decoration: TextDecoration.underline
         ),
         ),
@@ -24,7 +24,7 @@ Function()? onPressed;
         text!,style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: fontSize??20,
-        color: color ??Colors.white,
+        color: color ??Colors.black54,
       ),
       ),
     );

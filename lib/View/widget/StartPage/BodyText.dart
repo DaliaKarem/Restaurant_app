@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class BodyText extends StatelessWidget {
-   BodyText({Key? key,required this.bodyText}) : super(key: key);
+class BodyTextForSign extends StatelessWidget {
+  BodyTextForSign({Key? key,required this.bodyText}) : super(key: key);
 String bodyText;
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ String bodyText;
       alignment: Alignment.center,
       padding: EdgeInsets.only(right: 5),
       child: Text(bodyText!,
-        style:TextStyle(fontSize: 15, color: Colors.white,),
+        style:TextStyle(fontSize: 15, color:Colors.grey,),
       ),);
   }
 }

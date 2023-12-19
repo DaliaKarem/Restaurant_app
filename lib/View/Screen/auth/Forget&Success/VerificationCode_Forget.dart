@@ -7,6 +7,7 @@ import 'package:restaurantapp/controller/Auth/Forget&Success/VerficationCode_Fog
 import 'package:restaurantapp/view/widget/Shared/BodyText.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:otp_text_field/otp_text_field.dart';
+import 'package:restaurantapp/view/widget/StartPage/BodyText.dart';
 class VerificaionCode_Forget extends StatelessWidget {
   const VerificaionCode_Forget({Key? key}) : super(key: key);
 
@@ -21,7 +22,7 @@ class VerificaionCode_Forget extends StatelessWidget {
           HeadLineText(headline: "Verification Code For Forget"),
           SizedBox(height: 20,),
 
-          BodyText(textBody: 'Enter Code Which is sent in your Email',),
+          BodyTextForSign(bodyText: 'Enter Code Which is sent in your Email',),
           SizedBox(height: 60,),
 
           OTPTextField(

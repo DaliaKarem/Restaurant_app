@@ -33,7 +33,7 @@ class Login extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     "Welcome You can Sign in with your Email an Pass If you Forget Your pass Click on Forget Pass ",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(fontSize: 15, color: colorApp.grey),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -96,7 +96,7 @@ class Login extends StatelessWidget {
                         padding: EdgeInsets.only(left: 10, top: 20),
                         child: Text("Don't Have an Account ",
                             textAlign: TextAlign.start,
-                            style: TextStyle(color: Colors.white, fontSize: 15))),
+                            style: TextStyle(color: colorApp.grey, fontSize: 15))),
                     Container(
                         padding: EdgeInsets.only(left: 10, top: 20),
                         child: TextButton(

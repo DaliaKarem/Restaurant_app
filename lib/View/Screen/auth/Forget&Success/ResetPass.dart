@@ -6,6 +6,7 @@ import 'package:restaurantapp/view/widget/Shared/BodyText.dart';
 import 'package:restaurantapp/view/widget/Shared/ButtonInSign.dart';
 import 'package:restaurantapp/view/widget/Shared/HeadLineText.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
+import 'package:restaurantapp/view/widget/StartPage/BodyText.dart';
 
 class ResetPass extends StatelessWidget {
   const ResetPass({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class ResetPass extends StatelessWidget {
               HeadLineText(headline: "Reset PassWord"),
               SizedBox(height: 20,),
 
-              BodyText(textBody: 'Enter New Password',),
+              BodyTextForSign(bodyText: 'Enter New Password',),
               SizedBox(height: 60,),
               GetBuilder<ResetPassControllerImp>(builder: (controller){
                 return  TextFormFields(

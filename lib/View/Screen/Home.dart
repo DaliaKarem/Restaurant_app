@@ -9,61 +9,74 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    homeSceenControllerImp controller = Get.put(homeSceenControllerImp());
-    return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: colorApp.grey,
-            primaryColor: Colors.grey,
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: controller.currentage,
-            onTap: (index) {
-              controller.changepage(index);
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: (controller.currentage == 0) ? colorApp.primary : Colors.grey,
+    Get.put(homeSceenControllerImp());
+
+    return GetBuilder<homeSceenControllerImp>(builder: (controller) {
+      return Scaffold(
+        bottomNavigationBar: BottomAppBar(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: Colors.white,
+            ),
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.shifting,
+              selectedItemColor:  colorApp.primary ,
+              currentIndex: controller.currentage,
+              onTap: (index) {
+                controller.changepage(index);
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home,
+                    color: (controller.currentage == 0)
+                        ? colorApp.primary
+                        : Colors.grey,
+                  ),
+                  label: 'Home',
                 ),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite,
-                  color: (controller.currentage == 1) ? colorApp.primary : Colors.grey,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.favorite,
+                    color: (controller.currentage == 1)
+                        ? colorApp.primary
+                        : Colors.grey,
+                  ),
+                  label: 'Favorites',
                 ),
-                label: 'Favorites',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.add_shopping_cart,
-                  color: (controller.currentage == 2) ? colorApp.primary : Colors.grey,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.add_shopping_cart,
+                    color: (controller.currentage == 2)
+                        ? colorApp.primary
+                        : Colors.grey,
+                  ),
+                  label: 'Cart',
                 ),
-                label: 'Cart',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings,
-                  color: (controller.currentage == 3) ? colorApp.primary : Colors.grey,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.settings,
+                    color: (controller.currentage == 3)
+                        ? colorApp.primary
+                        : Colors.grey,
+                  ),
+                  label: 'Settings',
                 ),
-                label: 'Settings',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_circle,
-                  color: (controller.currentage == 4) ? colorApp.primary : Colors.grey,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.account_circle,
+                    color: (controller.currentage == 4)
+                        ? colorApp.primary
+                        : Colors.grey,
+                  ),
+                  label: 'Account',
                 ),
-                label: 'Account',
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      body: controller.Pages.elementAt(controller.currentage),
-    );
+        body: controller.Pages.elementAt(controller.currentage),
+      );
+    });
   }
 }

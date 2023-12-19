@@ -24,7 +24,7 @@ class UnderImage extends StatelessWidget {
           children: [
             Text(headText!, style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),),
             SizedBox(height: 5,),
-            BodyText(bodyText: bodyText!,),
+            BodyTextForSign(bodyText: bodyText!,),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.start,

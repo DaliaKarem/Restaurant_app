@@ -33,6 +33,7 @@ class homeSceenControllerImp extends homeSceenController{
   ];
   @override
   changepage(int index) {
+    print("index ${index}");
     currentage=index;
     update();
   }

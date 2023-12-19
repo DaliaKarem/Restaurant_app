@@ -18,9 +18,12 @@ class SuccessSign extends StatelessWidget {
           Center(child: Text("Done",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
           SizedBox(height: 20,),
 
-          ButtonInSign(textbutton: "Login", onPressed: (){
-            controllerImp.gotoLogin();
-          }),
+          Padding(
+            padding: const EdgeInsets.only(top:80),
+            child: ButtonInSign(textbutton: "Login", onPressed: (){
+              controllerImp.gotoLogin();
+            }),
+          ),
         ],
       ),
     );
