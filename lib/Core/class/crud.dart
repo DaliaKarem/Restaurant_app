@@ -10,6 +10,7 @@ class crud {
   Future<Either<statusReq, Map>> postData(String url, Map data) async {
     try {
       if (await checkInterne() == true) {
+        print("Post");
         print("check  ${url}");
         var res = await http.post(Uri.parse(url), body: data);
         print("check11");
@@ -31,6 +32,34 @@ class crud {
         // Handle other types of exceptions
         print("Unknown error occurred: $e");
         return Left(statusReq.Error);
+    }
+  }
+  Future<Either<statusReq, Map>> getData(String url) async {
+    try {
+      if (await checkInterne() == true) {
+        print("Get");
+
+        print("check  ${url}");
+        var res = await http.get(Uri.parse(url));
+        print("check11");
+        print("data is  ${res}");
+        print(res.statusCode);
+        if (res.statusCode == 200 || res.statusCode == 201) {
+          Map resBody = jsonDecode(res.body);
+          print("************************");
+          print(resBody);
+          return Right(resBody);
+        } else {
+          return Left(statusReq.Error);
+        }
+      } else {
+        return Left(statusReq.Error);
+      }
+    }
+    catch (e) {
+      // Handle other types of exceptions
+      print("Unknown error occurred: $e");
+      return Left(statusReq.Error);
     }
   }
 }

@@ -7,7 +7,7 @@ class signUpData{
     var res=await _crud.postData(linkapp.Signup, {
           "name":name,
           "email":email,
-          "pass":pass,
+          "password":pass,
           "phone":phone,
     });
     print("name $name");

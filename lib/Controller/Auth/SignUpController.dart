@@ -56,7 +56,7 @@ class SignUpControllerImp extends SignUpController {
       print("=================================$res");
       if(status==statusReq.success)
       {
-        if(res['success']=='success')
+        if(res['success']==true)
         {
           Get.offNamed(routeApp.verifySignCode,arguments: {"email":email.text});
         }

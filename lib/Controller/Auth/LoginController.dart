@@ -18,7 +18,7 @@ class LoginControllerImp extends LoginController{
   late TextEditingController password;
   GlobalKey<FormState>formstate=GlobalKey<FormState>();
   statusReq? status;
- // loginData logindata=loginData(Get.find());
+  loginData logindata=loginData(Get.find());
   myServices myserveices=Get.find();
   showPass()
   {
@@ -39,39 +39,36 @@ class LoginControllerImp extends LoginController{
 
   @override
   login() async{
-    Get.offNamed(routeApp.Home);
-    // var form=formstate.currentState;
-    // if(form!.validate()){
-    //   status=statusReq.loading;
-    //   update();
-    //   var res=await logindata.postData(email.text,password.text);
-    //   status=handlingData(res);
-    //   print("=================================$res");
-    //   if(status==statusReq.success)
-    //   {
-    //     if(res['status']=='success')
-    //     {
-    //       myserveices.sharedPreferences.setString("id",res['data']['user_id'] );
-    //       myserveices.sharedPreferences.setString("email",res['data']['user_email'] );
-    //       myserveices.sharedPreferences.setString("name", res['data']['user_name']);
-    //       myserveices.sharedPreferences.setString("phone", res['data']['user_phone']);
-    //       myserveices.sharedPreferences.setString("onboarding", "2");
-    //
-    //       Get.offNamed(routeApp.Home);
-    //     }
-    //     else{
-    //       Get.defaultDialog(title: "Error",middleText: "Email or Pass No Correct");
-    //       status=statusReq.Error;
-    //     }
-    //
-    //   }
-    //   update();
-    //   //bec when we go to sign up again after verification data saved
-    //   //Get.delete<SignUpControllerImp>();
-    // }
-    // else{
-    //   print("Error in sign");
-    // }
+    var form=formstate.currentState;
+    if(form!.validate()){
+      status=statusReq.loading;
+      update();
+      var res=await logindata.postData(email.text,password.text);
+      status=handlingData(res);
+      print("=================================${res['token']}  ${res['data']['email']}  ");
+      if(status==statusReq.success)
+      {
+        if(res['success']==true)
+        {
+          myserveices.sharedPreferences.setString("id",res['token'] );
+          myserveices.sharedPreferences.setString("email",res['data']['email'] );
+          myserveices.sharedPreferences.setString("name", res['data']['name']);
+          myserveices.sharedPreferences.setString("onboarding", "2");
+          Get.offNamed(routeApp.Home);
+        }
+        else{
+          Get.defaultDialog(title: "Error",middleText: "Email or Pass No Correct");
+          status=statusReq.Error;
+        }
+
+      }
+      update();
+      //bec when we go to sign up again after verification data saved
+      //Get.delete<SignUpControllerImp>();
+    }
+    else{
+      print("Error in sign");
+    }
 
   }
 

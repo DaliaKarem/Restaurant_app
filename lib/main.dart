@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurantapp/Binding/binding.dart';
+import 'package:restaurantapp/Mongo.dart';
 import 'package:restaurantapp/core/services/services.dart';
 import 'package:restaurantapp/Routes.dart';
 import 'package:restaurantapp/core/const/appTheme.dart';
@@ -21,7 +22,7 @@ import 'package:restaurantapp/core/const/appTheme.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServies();
-
+  await MongoDB.connect();
   runApp(const MyApp());
 }
 

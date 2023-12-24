@@ -4,7 +4,7 @@ class CategoryData{
   crud _crud;
   CategoryData(this._crud);
   getData()async{
-    var res=await _crud.postData(linkapp.Category, {});
+    var res=await _crud.getData(linkapp.Category);
     print("Res issssss  $res");
     return res.fold((l) => l, (r) => r);
   }
