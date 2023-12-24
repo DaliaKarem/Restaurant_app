@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/controller/HomePageController.dart';
+import 'package:restaurantapp/controller/homePagecontroller.dart';
 import 'package:restaurantapp/core/const/color.dart';
 import 'package:restaurantapp/view/widget/HomePage/ListOfCategories.dart';
 import 'package:restaurantapp/view/widget/Shared/largetext.dart';

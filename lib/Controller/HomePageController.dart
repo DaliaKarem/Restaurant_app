@@ -12,23 +12,25 @@ abstract class HomePageController extends GetxController{
 }
 class homePageControllerImp extends HomePageController{
     myServices mysevices=Get.find();
+    String ?name,id;
   CategoryData category_data=CategoryData(Get.find());
   statusReq ?status;
-  @override
+    List resCate=[];
+    @override
   initialData(){
-   // id=mysevices.sharedPreferences.getString("id");
+    id=mysevices.sharedPreferences.getString("id");
+    name=mysevices.sharedPreferences.getString("name");
 
   }
   @override
   void onInit() {
-    //initialData();
+    initialData();
     print("Startt");
     getData();
     super.onInit();
   }
   @override
   getData()async{
-    //cart.clear();
     status=statusReq.loading;
     print("Categoriesssss");
     var res=await category_data.getData();
@@ -36,13 +38,12 @@ class homePageControllerImp extends HomePageController{
     status=handlingData(res);
     if(status==statusReq.success)
     {
-      if(res['status']=='success')
+      if(res['success']==true)
       {
         print("Succcccccccccces");
         print(res);
-        //List resdata=res['data'];
-       // cart.addAll(resdata.map((e) => CartModel.fromJson(e)));
-        //print("cart is:   ${res['data']}");
+        resCate.addAll(res['data']);
+       //print("ResCate ${resCate}" );
       }
       else{
         status=statusReq.Error;
@@ -52,6 +53,5 @@ class homePageControllerImp extends HomePageController{
 
     update();
   }
-
 
 }

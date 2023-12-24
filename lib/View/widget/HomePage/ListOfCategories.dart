@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/controller/HomePageController.dart';
+import 'package:restaurantapp/controller/homePagecontroller.dart';
+import 'package:restaurantapp/data/model/CategoryModel.dart';
 class ListOfCategories extends GetView<homePageControllerImp> {
   const ListOfCategories({Key? key}) : super(key: key);
 
@@ -10,17 +11,18 @@ class ListOfCategories extends GetView<homePageControllerImp> {
       height: 50, // Set a height for the container
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: controller.resCate.length,
         itemBuilder: (context, index) {
-          return Categoies();
+          return Categoies(categories:CategoryModel.fromJson(controller.resCate[index]));
         },
       ),
     );
   }
 }
-class Categoies extends StatelessWidget {
-  const Categoies({Key? key}) : super(key: key);
+class Categoies extends GetView<homePageControllerImp> {
+   Categoies({Key? key,required this.categories}) : super(key: key);
 
+   final CategoryModel categories;
   @override
   Widget build(BuildContext context) {
     return  InkWell(
@@ -30,7 +32,7 @@ class Categoies extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal:10, vertical: 5),
         child: Center(
           child: Text(
-            "chines Food ",
+            categories.name!,
             style: TextStyle(fontSize: 20),
           ),
         ),
