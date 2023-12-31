@@ -13,9 +13,11 @@ abstract class HomePageController extends GetxController{
 class homePageControllerImp extends HomePageController{
     myServices mysevices=Get.find();
     String ?name,id;
-  CategoryData category_data=CategoryData(Get.find());
+  HomeData home_data=HomeData(Get.find());
   statusReq ?status;
     List resCate=[];
+    List Products=[];
+
     @override
   initialData(){
     id=mysevices.sharedPreferences.getString("id");
@@ -32,17 +34,19 @@ class homePageControllerImp extends HomePageController{
   @override
   getData()async{
     status=statusReq.loading;
-    print("Categoriesssss");
-    var res=await category_data.getData();
-    print("cartvvvvvvvvv");
+    print("Hommmmmmmmm");
+    var res=await home_data.getCategory();
+    var product=await home_data.getProduct();
     status=handlingData(res);
     if(status==statusReq.success)
     {
-      if(res['success']==true)
+      if(res['success']==true && product['success']==true)
       {
         print("Succcccccccccces");
         print(res);
         resCate.addAll(res['data']);
+        Products.addAll(res['data']);
+        print("PRoducts     ${Products}"  );
        //print("ResCate ${resCate}" );
       }
       else{

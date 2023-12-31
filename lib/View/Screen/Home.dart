@@ -55,12 +55,12 @@ class Home extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.settings,
+                    Icons.menu_book,
                     color: (controller.currentage == 3)
                         ? colorApp.primary
                         : Colors.grey,
                   ),
-                  label: 'Settings',
+                  label: 'Menu',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:restaurantapp/view/Screen/Cart.dart';
+import 'package:restaurantapp/view/Screen/Fav.dart';
 import 'package:restaurantapp/view/screen/HomePage.dart';
 
 abstract class homeSceenController extends GetxController{
@@ -11,11 +13,10 @@ class homeSceenControllerImp extends homeSceenController{
   int currentage=0;
   List<Widget> Pages=[
     HomePage(),
+    Fav(),
+    Cart(),
     Column(children: [
-      Text("fav")
-    ],),
-    Column(children: [
-      Text("set")
+      Text("ncjn")
     ],),
     Column(children: [
       Text("mess")
