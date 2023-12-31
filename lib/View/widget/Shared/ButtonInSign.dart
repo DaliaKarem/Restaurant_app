@@ -3,15 +3,16 @@ import 'package:restaurantapp/core/const/color.dart';
 
 class ButtonInSign extends StatelessWidget {
   ButtonInSign(
-      {Key? key, required this.textbutton, this.textColor, this.ButonColor,required this.onPressed})
+      {Key? key, this.v,this.w,required this.textbutton, this.textColor, this.ButonColor,required this.onPressed})
       : super(key: key);
   String? textbutton;
   Color? textColor, ButonColor;
   void Function()? onPressed;
+  double ?w,v;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
+      width: w ?? 200,
       child: MaterialButton(
         onPressed:onPressed ,
         child: Text(
@@ -23,7 +24,7 @@ class ButtonInSign extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: v??20),
       ),
 
     );
