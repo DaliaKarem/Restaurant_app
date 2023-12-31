@@ -27,7 +27,6 @@ class SignUpControllerImp extends SignUpController {
   }
   @override
   void onInit() {
-    // TODO: implement onInit
     email = TextEditingController();
     password = TextEditingController();
     userName= TextEditingController();
