@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:restaurantapp/view/Screen/Cart.dart';
 import 'package:restaurantapp/view/Screen/Fav.dart';
+import 'package:restaurantapp/view/Screen/menu.dart';
 import 'package:restaurantapp/view/screen/HomePage.dart';
 
 abstract class homeSceenController extends GetxController{
@@ -15,9 +16,7 @@ class homeSceenControllerImp extends homeSceenController{
     HomePage(),
     Fav(),
     Cart(),
-    Column(children: [
-      Text("ncjn")
-    ],),
+    menu(),
     Column(children: [
       Text("mess")
     ],),
