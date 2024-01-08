@@ -12,7 +12,7 @@ abstract class HomePageController extends GetxController{
 }
 class homePageControllerImp extends HomePageController{
     myServices mysevices=Get.find();
-    String ?name,id;
+    String ?name,id,RestId=Get.arguments['RestId'],Restname=Get.arguments['Restname'];
   HomeData home_data=HomeData(Get.find());
   statusReq ?status;
     List resCate=[];
@@ -22,12 +22,11 @@ class homePageControllerImp extends HomePageController{
   initialData(){
     id=mysevices.sharedPreferences.getString("id");
     name=mysevices.sharedPreferences.getString("name");
-
-  }
+    }
   @override
   void onInit() {
     initialData();
-    print("Startt");
+    print("Startt at  ${Restname}");
     getData();
     super.onInit();
   }

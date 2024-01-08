@@ -5,6 +5,8 @@ class routeApp{
   static const String Login="/Login";
   static const String SignUp="/SignUp";
   static const String SuccessSignUp="/SuccessSignUp";
+   //RestaurantPage
+  static const String RestaurantPage="/RestaurantPage";
 
   //Auth Check
   static const String ForgetPass="/ForgetPass";

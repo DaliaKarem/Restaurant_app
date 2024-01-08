@@ -2,6 +2,8 @@ class linkapp{
   //http://localhost:8000/Auth/signup
   static const String linkServer="http://192.168.1.4:8000";
 
+  //RestaurantPage
+  static const String Restaurants="$linkServer/Users";
   //Home
   static const String Category="$linkServer/Category";
   static const String Products="$linkServer/Products";

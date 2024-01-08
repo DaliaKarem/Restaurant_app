@@ -9,6 +9,7 @@ import 'package:restaurantapp/view/Screen/auth/Forget_Success/VerificationCode_F
 import 'package:restaurantapp/view/screen/Home.dart';
 import 'package:restaurantapp/view/screen/auth/Login.dart';
 import 'package:restaurantapp/view/screen/auth/SignUp.dart';
+import 'package:restaurantapp/view/Screen/RestaurantPage.dart';
 
 import 'View/Screen/OnBoarding.dart';
 
@@ -16,6 +17,8 @@ List<GetPage<dynamic>>?routes=[
   GetPage(name: "/", page:()=> StartPage()),
   //page:()=>onBoarding(),middlewares: [middelware()]
   GetPage(name: routeApp.OnBoarding,page:()=>onBoarding() ),
+  //RestaurantPages
+  GetPage(name: routeApp.RestaurantPage, page:()=>RestaurantPage()),
 
 //Auth
   GetPage(name: routeApp.Login, page:()=>Login()),

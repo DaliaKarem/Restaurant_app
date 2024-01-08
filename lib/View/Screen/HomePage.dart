@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:restaurantapp/controller/homePagecontroller.dart';
 import 'package:restaurantapp/core/const/color.dart';
 import 'package:restaurantapp/view/widget/HomePage/ListOfCategories.dart';
+import 'package:restaurantapp/view/widget/Shared/Search.dart';
 import 'package:restaurantapp/view/widget/Shared/largetext.dart';
 import 'package:restaurantapp/view/widget/Sign/TextFormField.dart';
 
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(homePageControllerImp());
+    homePageControllerImp controllerImp=Get.put(homePageControllerImp());
     return Scaffold(
       body: Container(
         child: ListView(
@@ -39,23 +40,11 @@ class HomePage extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.6),
                         child: Center(
                             child: Text(
-                              "Welcome to Our Restaurant",
+                              "Welcome to Our Restaurant ${controllerImp.Restname}",
                               style: Theme.of(context).textTheme.headline1,
                             )),
                       ),
-                      Positioned(
-                        bottom: -50,
-                        child: Container(
-                          width: 400,
-                          child: TextFormFields(
-                            isNum: false,
-                            hint: "Search..",
-                            icons: Icon(Icons.search),
-                            icons2: Icon(Icons.search),
-                            onTapIcon: () {},
-                          ),
-                        ),
-                      ),
+                      Search(bottom: -50,)
                     ],
                   ),
                 ),

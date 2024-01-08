@@ -54,7 +54,7 @@ class LoginControllerImp extends LoginController{
           myserveices.sharedPreferences.setString("email",res['data']['email'] );
           myserveices.sharedPreferences.setString("name", res['data']['name']);
           myserveices.sharedPreferences.setString("onboarding", "2");
-          Get.offNamed(routeApp.Home);
+          Get.offNamed(routeApp.RestaurantPage);
         }
         else{
           Get.defaultDialog(title: "Error",middleText: "Email or Pass No Correct");
