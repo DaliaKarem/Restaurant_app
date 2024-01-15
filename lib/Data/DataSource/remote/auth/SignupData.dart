@@ -10,10 +10,6 @@ class signUpData{
           "password":pass,
           "phone":phone,
     });
-    print("name $name");
-    print(res);
-    print(res.fold((l) => l, (r) => r));
-    print("////");
     return res.fold((l) => l, (r) => r);
   }
 }

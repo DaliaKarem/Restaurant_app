@@ -26,6 +26,8 @@ class LargeText extends StatelessWidget {
         fontSize: fontSize??20,
         color: color ??Colors.black54,
       ),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
       ),
     );
   }

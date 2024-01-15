@@ -53,6 +53,7 @@ class LoginControllerImp extends LoginController{
           myserveices.sharedPreferences.setString("id",res['token'] );
           myserveices.sharedPreferences.setString("email",res['data']['email'] );
           myserveices.sharedPreferences.setString("name", res['data']['name']);
+          myserveices.sharedPreferences.setString("idUser", res['data']['_id']);
           myserveices.sharedPreferences.setString("onboarding", "2");
           Get.offNamed(routeApp.RestaurantPage);
         }

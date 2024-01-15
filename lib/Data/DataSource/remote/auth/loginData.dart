@@ -11,9 +11,6 @@ class loginData{
       "email":email,
       "password":pass,
     });
-    print(res);
-    print(res.fold((l) => l, (r) => r));
-    print("////");
     return res.fold((l) => l, (r) => r);
   }
 }

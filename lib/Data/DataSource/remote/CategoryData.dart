@@ -5,12 +5,10 @@ class HomeData{
   HomeData(this._crud);
   getCategory()async{
     var res=await _crud.getData(linkapp.Category);
-    print("Res issssss  $res");
     return res.fold((l) => l, (r) => r);
   }
    getProduct(String id) async {
-    var res = await _crud.getData(linkapp.Products, queryParams: {'id': id} );
-    print("Res issssss $res");
+    var res = await _crud.getData(linkapp.Products, pathParam: id );
     return res.fold((l) => l, (r) => r);
   }
 }

@@ -37,10 +37,11 @@ class ContainerOfTreding extends StatelessWidget {
   ContainerOfTreding(
       {Key? key,
         required this.onTap,
-        required this.product})
+        required this.product,this.height})
       : super(key: key);
   Function()? onTap;
 productModel product;
+double?height;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -68,7 +69,9 @@ productModel product;
                 text: product.desc,
                 fontSize: 15,
                 color: Colors.grey.shade400,
+
               ),
+              SizedBox(height: height ,),
               RatingBar.builder(
                 initialRating: product.ratings!.toDouble(),
                 minRating: 1,

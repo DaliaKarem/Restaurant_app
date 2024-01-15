@@ -11,4 +11,7 @@ class linkapp{
   //Auth
   static const String Signup="$linkServer/Auth/signup";
   static const String Login="$linkServer/Auth/login";
+  //Fav
+  static const String Fav="$linkServer/Fav";
+
 }
