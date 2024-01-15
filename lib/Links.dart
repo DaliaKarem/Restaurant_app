@@ -13,5 +13,6 @@ class linkapp{
   static const String Login="$linkServer/Auth/login";
   //Fav
   static const String Fav="$linkServer/Fav";
+  static const String Cart="$linkServer/Cart";
 
 }

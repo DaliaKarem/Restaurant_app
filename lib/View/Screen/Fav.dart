@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurantapp/controller/Fav-Cart-Menu/FavController.dart';
+import 'package:restaurantapp/controller/Fav-Cart/FavController.dart';
 import 'package:restaurantapp/view/widget/Fav/ListOfFav.dart';
 import 'package:restaurantapp/view/widget/Shared/Fav_Cart_menu(Headline).dart';
 

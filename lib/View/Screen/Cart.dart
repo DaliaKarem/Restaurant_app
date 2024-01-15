@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurantapp/controller/Fav-Cart/CartController.dart';
 import 'package:restaurantapp/view/widget/Cart/ListOfCart.dart';
 import 'package:restaurantapp/view/widget/Fav/ListOfFav.dart';
 import 'package:restaurantapp/view/widget/Shared/ButtonInSign.dart';
@@ -10,6 +12,7 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartControllerImp controllerImp=Get.put(CartControllerImp());
     return Scaffold(
       body: Column(
         children: [
