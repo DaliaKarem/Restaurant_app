@@ -5,7 +5,6 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:restaurantapp/core/class/satusReq.dart';
 import 'package:restaurantapp/core/functions/checkConnectInternet.dart';
-
 class crud {
   Future<Either<statusReq, Map>> postData(String url, Map data) async {
     try {
@@ -27,22 +26,32 @@ class crud {
       } else {
         return Left(statusReq.Error);
       }
-    }
-    catch (e) {
-        // Handle other types of exceptions
-        print("Unknown error occurred: $e");
-        return Left(statusReq.Error);
+    } catch (e) {
+      // Handle other types of exceptions
+      print("Unknown error occurred: $e");
+      return Left(statusReq.Error);
     }
   }
-  Future<Either<statusReq, Map>> getData(String url) async {
+
+  Future<Either<statusReq, Map>> getData(String url, {Map<String, dynamic>? queryParams}) async {
     try {
       if (await checkInterne() == true) {
-        print("Get");
+        print("Get ${queryParams?.values}");
 
-        print("check  ${url}");
+        if (queryParams != null && queryParams.isNotEmpty) {
+          final query = Uri(queryParameters: queryParams).query;
+          print("query ${query}");
+
+          // Append the query parameters directly to the URL
+          url = '$url/${queryParams?.values.join(',')}';
+
+        }
+
+        print("check  $url");
+
         var res = await http.get(Uri.parse(url));
         print("check11");
-        print("data is  ${res}");
+        print("data is  $res");
         print(res.statusCode);
         if (res.statusCode == 200 || res.statusCode == 201) {
           Map resBody = jsonDecode(res.body);
@@ -55,8 +64,7 @@ class crud {
       } else {
         return Left(statusReq.Error);
       }
-    }
-    catch (e) {
+    } catch (e) {
       // Handle other types of exceptions
       print("Unknown error occurred: $e");
       return Left(statusReq.Error);

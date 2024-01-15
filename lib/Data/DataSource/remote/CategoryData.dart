@@ -8,9 +8,9 @@ class HomeData{
     print("Res issssss  $res");
     return res.fold((l) => l, (r) => r);
   }
-  getProduct()async{
-    var res=await _crud.getData(linkapp.Products);
-    print("Res issssss  $res");
+   getProduct(String id) async {
+    var res = await _crud.getData(linkapp.Products, queryParams: {'id': id} );
+    print("Res issssss $res");
     return res.fold((l) => l, (r) => r);
   }
 }

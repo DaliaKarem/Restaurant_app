@@ -49,6 +49,7 @@ dependencies:
   lottie: ^2.7.0
   dartz: ^0.10.1
   mongo_dart: ^0.9.4
+  realm: ^1.6.1
 
 
 flutter_native_splash:

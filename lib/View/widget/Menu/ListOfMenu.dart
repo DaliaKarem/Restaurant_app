@@ -10,7 +10,7 @@ class ListOfMenu extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, index) {
           return Container(
-              child: ContainerOfTreding(onTap: () {  }, title: 'jndcjnsc dcjndj', des: 'ndcjdnnc jvnjnvn', img: 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg',),
+            //  child: ContainerOfTreding(onTap: () {  }, title: 'jndcjnsc dcjndj', des: 'ndcjdnnc jvnjnvn', img: 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg',),
 
           );
         },

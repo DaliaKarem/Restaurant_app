@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:restaurantapp/controller/homePagecontroller.dart';
 import 'package:restaurantapp/core/const/color.dart';
+import 'package:restaurantapp/data/model/ProductModel.dart';
 import 'package:restaurantapp/view/widget/Shared/largetext.dart';
 
-class ImageContainer extends StatelessWidget {
+class ImageContainer extends GetView<homePageControllerImp> {
   ImageContainer({Key? key, this.onTap}) : super(key: key);
   Function()? onTap;
 
@@ -21,12 +24,10 @@ class ImageContainer extends StatelessWidget {
         itemBuilder: (build, index) {
           return ContainerOfTreding(
               onTap: onTap,
-              title: "Chicke with Rice",
-              des: "rfnrn jnrfn jgjrjn jgnjrngjn jjrnfjnr rj",
-              img:
-              "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D");
+          product:productModel.fromJson(controller.Products[index]) ,
+          );
         },
-        itemCount: 5,
+        itemCount: controller.Products.length,
       ),
     );
   }
@@ -36,13 +37,10 @@ class ContainerOfTreding extends StatelessWidget {
   ContainerOfTreding(
       {Key? key,
         required this.onTap,
-        required this.title,
-        required this.des,
-        required this.img})
+        required this.product})
       : super(key: key);
   Function()? onTap;
-  String title, des, img;
-
+productModel product;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,22 +55,22 @@ class ContainerOfTreding extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                img,
+                product.img!,
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.fill,
               ),
               LargeText(
-                text: title,
+                text: product.name!,
                 fontSize: 17,
               ),
               LargeText(
-                text: des,
+                text: product.desc,
                 fontSize: 15,
                 color: Colors.grey.shade400,
               ),
               RatingBar.builder(
-                initialRating: 3,
+                initialRating: product.ratings!.toDouble(),
                 minRating: 1,
                 direction: Axis.horizontal,
                 allowHalfRating: true,

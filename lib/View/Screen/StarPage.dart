@@ -15,8 +15,7 @@ class StartPage extends StatelessWidget {
           Container(
             height: double.infinity,
             width: double.infinity,
-            child: Image.asset("assets/onboarding/startPage.png",
-                fit: BoxFit.cover),
+            child: Image.asset("assets/onboarding/startPage.png",fit: BoxFit.cover),
           ),
           UnderImage(
             headText: "Eat, Enjoy, Explore.",

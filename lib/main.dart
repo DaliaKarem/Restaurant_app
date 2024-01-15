@@ -28,13 +28,9 @@ void main()async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  //TODO Creat Page Of Restaurants and Image of them and Rates
-
   //TODO adding icon Fav and Connect it with Backend
   //TODO adding icon Cart and Connect it with Backend
   //TODO Show For Each Restaurant its Menu
-  //ToDO Adding Name Of User in All App
-
 
   // This widget is the root of your application.
   @override

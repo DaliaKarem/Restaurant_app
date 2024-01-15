@@ -12,7 +12,8 @@ abstract class HomePageController extends GetxController{
 }
 class homePageControllerImp extends HomePageController{
     myServices mysevices=Get.find();
-    String ?name,id,RestId=Get.arguments['RestId'],Restname=Get.arguments['Restname'];
+    String ?name,id;
+    String RestId=Get.arguments['RestId'],Restname=Get.arguments['Restname'];
   HomeData home_data=HomeData(Get.find());
   statusReq ?status;
     List resCate=[];
@@ -35,7 +36,8 @@ class homePageControllerImp extends HomePageController{
     status=statusReq.loading;
     print("Hommmmmmmmm");
     var res=await home_data.getCategory();
-    var product=await home_data.getProduct();
+    print("ResstIDDDd  ${RestId } RestId");
+    var product=await home_data.getProduct(RestId!);
     status=handlingData(res);
     if(status==statusReq.success)
     {
@@ -44,7 +46,7 @@ class homePageControllerImp extends HomePageController{
         print("Succcccccccccces");
         print(res);
         resCate.addAll(res['data']);
-        Products.addAll(res['data']);
+        Products.addAll(product['data']);
         print("PRoducts     ${Products}"  );
        //print("ResCate ${resCate}" );
       }

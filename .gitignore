@@ -1,4 +1,6 @@
 # Miscellaneous
+lib/DB.dart
+lib/Mongo.dart
 *.class
 *.log
 *.pyc
