@@ -1,6 +1,6 @@
 # restaurantapp
 
-A new Flutter project.
+A new Flutter project Its a Restaurant App connect Flutter Project with Web App (Front end -> html,Css,js,Bootstrap   Back end->Node js ,Mongo DB ) this web App For Owners of Restaurants and Mobile App For Users.
 
 ## Getting Started
 
