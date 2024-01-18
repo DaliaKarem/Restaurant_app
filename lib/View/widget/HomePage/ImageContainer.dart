@@ -22,10 +22,12 @@ class ImageContainer extends GetView<homePageControllerImp> {
         },
         scrollDirection: Axis.horizontal,
         itemBuilder: (build, index) {
-          return ContainerOfTreding(
+          return GetBuilder<homePageControllerImp>(builder: (controller) {
+            return ContainerOfTreding(
               onTap: onTap,
-          product:productModel.fromJson(controller.Products[index]) ,
-          );
+              product: productModel.fromJson(controller.Products[index]),
+            );
+          });
         },
         itemCount: controller.Products.length,
       ),
@@ -33,65 +35,66 @@ class ImageContainer extends GetView<homePageControllerImp> {
   }
 }
 
-class ContainerOfTreding extends StatelessWidget {
+class ContainerOfTreding extends  GetView<homePageControllerImp> {
   ContainerOfTreding(
-      {Key? key,
-        required this.onTap,
-        required this.product,this.height})
+      {Key? key, required this.onTap, required this.product, this.height})
       : super(key: key);
   Function()? onTap;
-productModel product;
-double?height;
+  productModel product;
+  double? height;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: InkWell(
-        onTap: onTap,
-        child: Container(
-          height: 400,
-          width: 300,
-          decoration: BoxDecoration(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(
-                product.img!,
-                width: double.infinity,
-                height: 100,
-                fit: BoxFit.fill,
+          onTap: onTap,
+          child: GetBuilder<homePageControllerImp>(builder: (controller) {
+            return Container(
+              height: 400,
+              width: 300,
+              decoration: BoxDecoration(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.network(
+                    product.img!,
+                    width: double.infinity,
+                    height: 100,
+                    fit: BoxFit.fill,
+                  ),
+                  LargeText(
+                    text: product.name!,
+                    fontSize: 17,
+                  ),
+                  LargeText(
+                    text: product.desc,
+                    fontSize: 15,
+                    color: Colors.grey.shade400,
+                  ),
+                  SizedBox(
+                    height: height,
+                  ),
+                  RatingBar.builder(
+                    initialRating: product.ratings!.toDouble(),
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    itemSize: 20,
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
+                  ),
+                ],
               ),
-              LargeText(
-                text: product.name!,
-                fontSize: 17,
-              ),
-              LargeText(
-                text: product.desc,
-                fontSize: 15,
-                color: Colors.grey.shade400,
-
-              ),
-              SizedBox(height: height ,),
-              RatingBar.builder(
-                initialRating: product.ratings!.toDouble(),
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                itemBuilder: (context, _) => Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                ),
-                itemSize: 20,
-                onRatingUpdate: (rating) {
-                  print(rating);
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+            );
+          })),
     );
   }
 }

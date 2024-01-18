@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurantapp/controller/Fav-Cart/FavController.dart';
+import 'package:restaurantapp/core/class/handlingDataView.dart';
 import 'package:restaurantapp/view/widget/Fav/ListOfFav.dart';
 import 'package:restaurantapp/view/widget/Shared/Fav_Cart_menu(Headline).dart';
 
@@ -10,14 +11,17 @@ class Fav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavControllerImp favControllerImp=Get.put(FavControllerImp());
+  Get.put(FavControllerImp());
     return Scaffold(
       body: Column(
         children: [
           SizedBox(height: 30,),
           HeadlineForFavCart(text: 'Favorites',),
           SizedBox(height: 20,),
-          ListOfFav()
+          GetBuilder<FavControllerImp>(builder:(favControllerImp){
+            return  handlingDataView(status: favControllerImp.status!,widget: ListOfFav());
+
+          } )
         ],
       ),
     );

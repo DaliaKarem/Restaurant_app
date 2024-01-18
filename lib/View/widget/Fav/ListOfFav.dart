@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:restaurantapp/controller/Fav-Cart/FavController.dart';
 import 'package:restaurantapp/core/const/color.dart';
 import 'package:restaurantapp/data/model/FavModel.dart';
@@ -14,7 +15,13 @@ class ListOfFav extends GetView<FavControllerImp> {
         shrinkWrap: true,
         itemCount: controller.Favs.length,
         itemBuilder: (context, i) {
-          return Body(favModel: FavModel.fromJson(controller.Favs[i]));
+            if (controller.Favs.length==0) {
+              return Center(
+                child: Lottie.asset("assets/Lottie/Empty.json"),
+              );
+            } else {
+              return Body(favModel: FavModel.fromJson(controller.Favs[i]));
+            }
         },
         separatorBuilder: (context, index) => SizedBox(height: 20),
       ),
@@ -36,62 +43,66 @@ class Body extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Column(
-          children: [
-            Card(
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Image.network(
-                       favModel.nameProduct!.img!,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: Column(
-                        children: [
-                          ListTile(
-                            title: Text("${favModel.nameProduct!.name!}"),
+        child:GetBuilder<FavControllerImp>(
+          builder: (controller){
+            return Column(
+              children: [
+                Card(
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Image.network(
+                            favModel.nameProduct!.img!,
+                            fit: BoxFit.fill,
                           ),
-                          ListTile(title: Text("${favModel.nameProduct!.price}")),
-                          Row(
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Column(
                             children: [
+                              ListTile(
+                                title: Text("${favModel.nameProduct!.name!}"),
+                              ),
+                              ListTile(title: Text("${favModel.nameProduct!.price}")),
+                              Row(
+                                children: [
 
-                              MaterialButton(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                padding:
-                                EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                                onPressed: () {},
-                                child: Text("Add to Cart"),
-                                color: colorApp.primary,
-                              ),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.restore_from_trash_rounded,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  //controller.removeFrompage(favModel.itemId!);
-                                  print("Removed");
-                                },
-                              ),
+                                  MaterialButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20)),
+                                    padding:
+                                    EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                                    onPressed: () {},
+                                    child: Text("Add to Cart"),
+                                    color: colorApp.primary,
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.restore_from_trash_rounded,
+                                      color: Colors.red,
+                                    ),
+                                    onPressed: () {
+                                      //controller.removeFrompage(favModel.itemId!);
+                                      print("Removed");
+                                    },
+                                  ),
+                                ],
+                              )
                             ],
-                          )
-                        ],
-                      ),
-                    ),
+                          ),
+                        ),
 
-                  ],
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ),
+              ],
+            );
+          },
+        )
       ),
     );
   }
