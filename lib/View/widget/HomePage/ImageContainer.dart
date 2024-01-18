@@ -7,9 +7,7 @@ import 'package:restaurantapp/data/model/ProductModel.dart';
 import 'package:restaurantapp/view/widget/Shared/largetext.dart';
 
 class ImageContainer extends GetView<homePageControllerImp> {
-  ImageContainer({Key? key, this.onTap}) : super(key: key);
-  Function()? onTap;
-
+  ImageContainer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +22,6 @@ class ImageContainer extends GetView<homePageControllerImp> {
         itemBuilder: (build, index) {
           return GetBuilder<homePageControllerImp>(builder: (controller) {
             return ContainerOfTreding(
-              onTap: onTap,
               product: productModel.fromJson(controller.Products[index]),
             );
           });
@@ -38,12 +35,12 @@ class ImageContainer extends GetView<homePageControllerImp> {
 class ContainerOfTreding extends GetView<homePageControllerImp> {
   ContainerOfTreding({
     Key? key,
-    required this.onTap,
+    //required this.onTap,
     required this.product,
     this.height,
   }) : super(key: key);
 
-  Function()? onTap;
+  //Function()? onTap;
   productModel product;
   double? height;
 
@@ -52,7 +49,10 @@ class ContainerOfTreding extends GetView<homePageControllerImp> {
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: InkWell(
-        onTap: onTap,
+        onTap: (){
+          print("product.category!.name!  ${product.category!.name!}");
+          controller.gotoProductDetails(product.sId,product.name!, product.img!, product.price.toString()!, product.desc!,product.category!.name!);
+        },
         child: GetBuilder<homePageControllerImp>(
           builder: (controller) {
             return Stack(

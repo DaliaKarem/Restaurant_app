@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:restaurantapp/core/const/routesName.dart';
+import 'package:restaurantapp/view/Screen/ProductDetails.dart';
 import 'package:restaurantapp/view/Screen/StarPage.dart';
 import 'package:restaurantapp/view/Screen/auth/Forget_Success/ForgetPass.dart';
 import 'package:restaurantapp/view/Screen/auth/Forget_Success/ResetPass.dart';
@@ -19,7 +20,6 @@ List<GetPage<dynamic>>?routes=[
   GetPage(name: routeApp.OnBoarding,page:()=>onBoarding() ),
   //RestaurantPages
   GetPage(name: routeApp.RestaurantPage, page:()=>RestaurantPage()),
-
 //Auth
   GetPage(name: routeApp.Login, page:()=>Login()),
   GetPage(name: routeApp.SignUp, page:()=>SignUp()),
@@ -33,6 +33,8 @@ List<GetPage<dynamic>>?routes=[
 
   //Home
   GetPage(name: routeApp.Home, page:()=>Home()),
+
+  GetPage(name: routeApp.ProductDetails, page:()=>ProductDetails()),
 
 
 

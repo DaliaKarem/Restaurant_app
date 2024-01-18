@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:restaurantapp/core/const/routesName.dart';
 import 'package:restaurantapp/core/services/services.dart';
 import 'package:restaurantapp/core/class/satusReq.dart';
 import 'package:restaurantapp/core/functions/handlingData.dart';
@@ -8,7 +9,7 @@ import 'package:restaurantapp/view/screen/HomePage.dart';
 
 abstract class HomePageController extends GetxController{
  getData();
-
+ gotoProductDetails(String,String name,String img,String price,String desc,String Cate );
 }
 class homePageControllerImp extends HomePageController{
     myServices mysevices=Get.find();
@@ -68,6 +69,18 @@ class homePageControllerImp extends HomePageController{
     }
 
     update();
+  }
+
+  @override
+  gotoProductDetails(id,name,img,price,desc,cate) {
+      Get.toNamed(routeApp.ProductDetails,arguments: {
+        "id":id,
+        "name":name,
+        "img":img,
+        "price":price,
+        "desc":desc,
+        "cate":cate
+      });
   }
 
 }
