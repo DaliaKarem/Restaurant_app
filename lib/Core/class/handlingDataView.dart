@@ -12,15 +12,15 @@ class handlingDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     return status == statusReq.loading
         ? Center(
-            child: Lottie.asset("assets/lottie/Loading.json"),
+            child: Lottie.asset("assets/Lottie/Loading.json"),
           )
-        : status == statusReq.loading
+        : status == statusReq.Empty
             ? Center(
-                child: Lottie.asset("assets/lottie/offline.json"),
+                child: Lottie.asset("assets/Lottie/Empty.json"),
               )
             : status == statusReq.Error
                 ? Center(
-                    child: Lottie.asset("assets/lottie/Fail.json",repeat: false),
+                    child: Lottie.asset("assets/Lottie/Fail.json",repeat: false),
                   )
                 : widget;
   }

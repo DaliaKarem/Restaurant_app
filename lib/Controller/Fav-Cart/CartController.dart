@@ -47,7 +47,6 @@ class CartControllerImp extends CartController{
         print(product);
         Carts.addAll(product['data']);
         print("FAVSSSSS     ${Carts}"  );
-        //print("ResCate ${resCate}" );
       }
       else{
         status=statusReq.Error;
