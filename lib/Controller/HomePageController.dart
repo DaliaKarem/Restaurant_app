@@ -12,17 +12,19 @@ abstract class HomePageController extends GetxController{
 }
 class homePageControllerImp extends HomePageController{
     myServices mysevices=Get.find();
-    String ?name,id;
+    String ?name,id,img;
     String RestId=Get.arguments['RestId'],Restname=Get.arguments['Restname'];
   HomeData home_data=HomeData(Get.find());
   statusReq ?status;
     List resCate=[];
     List Products=[];
+    bool isNew=false;
 
     @override
   initialData(){
     id=mysevices.sharedPreferences.getString("id");
     name=mysevices.sharedPreferences.getString("name");
+    img=mysevices.sharedPreferences.getString("img");
     }
   @override
   void onInit() {
@@ -48,6 +50,15 @@ class homePageControllerImp extends HomePageController{
         resCate.addAll(res['data']);
         Products.addAll(product['data']);
         print("PRoducts     ${Products}"  );
+        for(int i=0;i<Products.length;i++)
+          {
+            print("Createddd   ${Products[i]['name']} ${Products[i]['createdAt']}");
+            if(Products[i]['createdAt']==DateTime.now())
+              {
+                print("Products[i]['name'] ${Products[i]['name']}");
+                isNew=true;
+              }
+          }
        //print("ResCate ${resCate}" );
       }
       else{
