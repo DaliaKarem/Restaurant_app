@@ -6,11 +6,21 @@ import 'package:http/http.dart' as http;
 import 'package:restaurantapp/core/class/satusReq.dart';
 import 'package:restaurantapp/core/functions/checkConnectInternet.dart';
 class crud {
-  Future<Either<statusReq, Map>> postData(String url, Map data) async {
+  Future<Either<statusReq, Map>> postData(String url, Map data,{Map<String, dynamic>? queryParams, String? pathParam}) async {
     try {
       if (await checkInterne() == true) {
         print("Post");
         print("check  ${url}");
+        if (queryParams != null && queryParams.isNotEmpty) {
+          final query = Uri(queryParameters: queryParams).query;
+          url = '$url?$query';  // Append the query parameters to the URL
+        }
+
+        if (pathParam != null && pathParam.isNotEmpty) {
+          url = '$url/$pathParam';  // Append the path parameter to the URL
+        }
+
+        print("check $url");
         var res = await http.post(Uri.parse(url), body: data);
         print("check11");
         print("data is  ${data}");

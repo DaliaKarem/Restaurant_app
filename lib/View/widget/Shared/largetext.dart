@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 class LargeText extends StatelessWidget {
-  LargeText({Key? key, this.fontSize,this.onPressed,this.link,required this.text,this.color}) : super(key: key);
+  LargeText({Key? key, this.padding,this.fontSize,this.onPressed,this.link,required this.text,this.color}) : super(key: key);
   String ?text;
   bool?link;
   Color ?color;
   double?fontSize;
   Function()? onPressed;
+  double?padding;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(10 ),
+    return Padding(padding: EdgeInsets.all(padding ?? 10 ),
       child: (link==true)?
       TextButton(
         onPressed: onPressed,

@@ -51,6 +51,7 @@ class LoginControllerImp extends LoginController{
         if(res['success']==true)
         {
           myserveices.sharedPreferences.setString("id",res['token'] );
+          myserveices.sharedPreferences.setString("img",res['data']['img'] );
           myserveices.sharedPreferences.setString("email",res['data']['email'] );
           myserveices.sharedPreferences.setString("name", res['data']['name']);
           myserveices.sharedPreferences.setString("idUser", res['data']['_id']);

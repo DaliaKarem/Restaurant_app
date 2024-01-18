@@ -22,10 +22,14 @@ class RestaurantPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top:50.0),
                 child: Row(
                   children: [
-                    Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtNvT7Xx61I94TEm_Jrr1j3FgAtGxxhPAqmr-5MQuYni6R8jOgYMCRfk_d4DvbCBfqNMk&usqp=CAU",width: 50,height: 50,),
-                    NameOfUser(username: controller.name!,),
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(controller.img!),
+                      radius: 25,
+                    ),
+                    SizedBox(width: 10),
+                    NameOfUser(username: controller.name!),
                   ],
-                ),
+                )
               ),
               Search(),
               handlingDataView(status: controller.status!, widget:  ListOfRes(),)

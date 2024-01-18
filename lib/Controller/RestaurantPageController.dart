@@ -15,7 +15,7 @@ abstract class RestaurantPageController extends GetxController{
 }
 class RestaurantPageControllerImp extends RestaurantPageController{
   myServices mysevices=Get.find();
-  String ?name,id;
+  String ?name,id,img;
   RestaurantsData restaurantsData=RestaurantsData(Get.find());
   String? RestId;
   statusReq ?status;
@@ -25,6 +25,7 @@ class RestaurantPageControllerImp extends RestaurantPageController{
   initialData(){
      id=mysevices.sharedPreferences.getString("id");
      name=mysevices.sharedPreferences.getString("name");
+     img=mysevices.sharedPreferences.getString("img");
 
   }
   @override
