@@ -1,3 +1,4 @@
+
 import 'package:restaurantapp/Links.dart';
 import 'package:restaurantapp/core/class/crud.dart';
 class signUpData{

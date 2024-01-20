@@ -15,7 +15,6 @@ class ListOfMenu extends GetView<homePageControllerImp> {
         itemBuilder: (context, index) {
           return Container(
             child: ContainerOfTreding(
-              onTap: (){},
               product:productModel.fromJson(controller.Products[index]) ,
               height: 5,
             ),
