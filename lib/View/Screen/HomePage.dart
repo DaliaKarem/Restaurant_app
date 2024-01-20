@@ -132,26 +132,6 @@ class HomePage extends StatelessWidget {
                     )
                   ],
                 ),
-
-                ImageContainer(),
-                Row(
-                  children: [
-                    LargeText(
-                      text: "Recommended",
-                    ),
-                    Spacer(),
-                    LargeText(
-                      link: true,
-                      text: "View All ",
-                      color: colorApp.primary,
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-                ImageContainer(),
-                SizedBox(
-                  height: 15,
-                )
               ],
             );
           },
