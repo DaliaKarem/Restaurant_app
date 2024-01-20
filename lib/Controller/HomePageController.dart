@@ -33,6 +33,7 @@ class homePageControllerImp extends HomePageController{
   }
   @override
   getData()async{
+      update();
     status=statusReq.loading;
     print("Hommmmmmmmm");
     var res=await home_data.getCategory();
