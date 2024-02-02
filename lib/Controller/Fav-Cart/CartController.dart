@@ -10,7 +10,8 @@ import 'package:restaurantapp/view/screen/HomePage.dart';
 
 abstract class CartController extends GetxController{
   getCart();
-
+  addCart(Strig);
+  removeCart(Sring);
 }
 class CartControllerImp extends CartController{
   myServices mysevices=Get.find();
@@ -56,5 +57,37 @@ class CartControllerImp extends CartController{
 
     update();
   }
+  @override
+  addCart(idProduct)async {
+    status=statusReq.loading;
+    var res=await cartData.addCart(idUser!, RestId, idProduct);
+    status=handlingData(res);
+    if(status==statusReq.success)
+    {
+      if(res['success']==true){
+        print("Added Successfully ");
+        Get.rawSnackbar(title: "Done",message: "Added Successfully");
+      }else{
+        status=statusReq.Error;
+      }
+    }
+    update();
+  }
 
+  @override
+  removeCart(idProduct)async {
+    status=statusReq.loading;
+    var res=await cartData.removeCart(idUser!, RestId, idProduct);
+    status=handlingData(res);
+    if(status==statusReq.success)
+    {
+      if(res['success']==true){
+        print("Removed Successfully ");
+        Get.rawSnackbar(title: "Done",message: "Removed Successfully");
+      }else{
+        status=statusReq.Error;
+      }
+    }
+    update();
+  }
 }

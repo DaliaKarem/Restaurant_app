@@ -8,6 +8,8 @@ import '../core/services/services.dart';
 
 abstract class ProductDetailsController extends GetxController{
   rateProduct(double);
+  addToFav();
+  addToCart();
 }
 class ProductDetailsControllerImp extends ProductDetailsController{
   String ?name,price,desc,img,cate,id;
@@ -46,6 +48,16 @@ class ProductDetailsControllerImp extends ProductDetailsController{
       Get.defaultDialog(title: "Error",middleText: "Can't send rate");
 
     }
+  }
+
+  @override
+  addToCart() {
+
+  }
+
+  @override
+  addToFav() {
+
   }
 
 

@@ -41,70 +41,70 @@ class Body extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: GetBuilder<CartControllerImp>(
-          builder: (controller){
-            return Column(
-              children: [
-                Card(
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 4,
-                          child: Image.network(
-                            cartModel.nameProduct!.img!,
-                            fit: BoxFit.fill,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: GetBuilder<CartControllerImp>(
+            builder: (controller){
+              return Column(
+                children: [
+                  Card(
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 4,
+                            child: Image.network(
+                              cartModel.nameProduct!.img!,
+                              fit: BoxFit.fill,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            children: [
-                              ListTile(
-                                title: Text("${cartModel.nameProduct!.name}"),
-                              ),
-                              ListTile(title: Text("${cartModel.nameProduct!.price}")),
-                              Row(
-                                children: [
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  title: Text("${cartModel.nameProduct!.name}"),
+                                ),
+                                ListTile(title: Text("${cartModel.nameProduct!.price}")),
+                                Row(
+                                  children: [
 
-                                  MaterialButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20)),
-                                    padding:
-                                    EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                                    onPressed: () {},
-                                    child: Text("Add to Cart"),
-                                    color: colorApp.primary,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.restore_from_trash_rounded,
-                                      color: Colors.red,
+                                    MaterialButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20)),
+                                      padding:
+                                      EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                                      onPressed: () {},
+                                      child: Text("Add to Cart"),
+                                      color: colorApp.primary,
                                     ),
-                                    onPressed: () {
-                                      // controller.removeFrompage(favModel.itemId!);
-                                      print("Removed");
-                                    },
-                                  ),
-                                ],
-                              )
-                            ],
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.restore_from_trash_rounded,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        // controller.removeFrompage(favModel.itemId!);
+                                        print("Removed");
+                                      },
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
-        )
+                ],
+              );
+            },
+          )
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:restaurantapp/view/Screen/Account.dart';
 import 'package:restaurantapp/view/Screen/Cart.dart';
 import 'package:restaurantapp/view/Screen/Fav.dart';
 import 'package:restaurantapp/view/Screen/menu.dart';
@@ -17,12 +18,7 @@ class homeSceenControllerImp extends homeSceenController{
     Fav(),
     Cart(),
     menu(),
-    Column(children: [
-      Text("mess")
-    ],),
-    Column(children: [
-      Text("Profile")
-    ],),
+    Account(),
     // FavPage(),
     // CartPAge(),
     // settingsPage(),

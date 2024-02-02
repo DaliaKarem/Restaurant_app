@@ -13,10 +13,12 @@ class middelware extends GetMiddleware{
   RouteSettings? redirect(String? route){
     if(myservices.sharedPreferences.getString("onboarding")=="2")
     {
-      return RouteSettings(name: routeApp.Home);
+      print("Go to Restaurant Page");
+      return RouteSettings(name: routeApp.RestaurantPage);
     }
     if(myservices.sharedPreferences.getString("onboarding")=="1")
       {
+        print("Go to Login");
         return RouteSettings(name: routeApp.Login);
       }
 

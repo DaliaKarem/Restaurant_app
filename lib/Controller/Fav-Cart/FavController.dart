@@ -9,7 +9,8 @@ import 'package:restaurantapp/view/screen/HomePage.dart';
 
 abstract class FavController extends GetxController{
   getFav();
-
+  addFav(string);
+  removeFav(String);
 }
 class FavControllerImp extends FavController{
   myServices mysevices=Get.find();
@@ -54,6 +55,40 @@ class FavControllerImp extends FavController{
 
     }
 
+    update();
+  }
+
+  @override
+  addFav(idProduct)async {
+    status=statusReq.loading;
+    var res=await favData.addFav(idUser!, RestId, idProduct);
+    status=handlingData(res);
+    if(status==statusReq.success)
+      {
+        if(res['success']==true){
+          print("Added Successfully ");
+          Get.rawSnackbar(title: "Done",message: "Added Successfully");
+        }else{
+          status=statusReq.Error;
+        }
+      }
+    update();
+  }
+
+  @override
+  removeFav(idProduct)async {
+    status=statusReq.loading;
+    var res=await favData.removeFav(idUser!, RestId, idProduct);
+    status=handlingData(res);
+    if(status==statusReq.success)
+    {
+      if(res['success']==true){
+        print("Removed Successfully ");
+        Get.rawSnackbar(title: "Done",message: "Removed Successfully");
+      }else{
+        status=statusReq.Error;
+      }
+    }
     update();
   }
 
